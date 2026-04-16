@@ -166,10 +166,10 @@ function Header() {
           </div>
           <div className="flex flex-col leading-none">
             <span className="text-[15px] font-semibold tracking-tight text-slate-900">
-              Medistan
+              SEOHA
             </span>
             <span className="text-[10px] font-medium uppercase tracking-[0.18em] text-slate-500">
-              Dental · Seoul
+              Dental · Korea
             </span>
           </div>
         </Link>
@@ -746,7 +746,7 @@ function Footer() {
               <div className="h-3 w-3 rounded-[2px] bg-white" />
             </div>
             <span className="text-sm font-semibold tracking-tight text-slate-900">
-              Medistan
+              SEOHA Dental
             </span>
             <span className="text-xs text-slate-500">
               · Seoul, Republic of Korea
@@ -762,7 +762,7 @@ function Footer() {
             <span>US-FDA 510(k)</span>
           </div>
           <div className="text-xs text-slate-500">
-            © 2026 Medistan Co., Ltd.
+            © 2026 SEOHA Medical Co., Ltd.
           </div>
         </div>
       </div>
