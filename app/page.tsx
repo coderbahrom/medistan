@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import {
   ArrowRight,
   ArrowUpRight,
@@ -7,12 +8,11 @@ import {
   Headphones,
   BadgeDollarSign,
   MessageCircle,
-  Menu,
   Quote,
   Check,
 } from "lucide-react";
 
-import { Button } from "@/components/ui/button";
+import { buttonVariants } from "@/components/ui/button";
 import {
   Card,
   CardContent,
@@ -22,28 +22,26 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { cn } from "@/lib/utils";
+import { Navbar } from "@/components/navbar";
+import { waMsg } from "@/lib/whatsapp";
+import { products } from "@/data/products";
+import { isBoneGraftSpecs, isMembraneSpecs } from "@/data/products";
 
 // ---------------------------------------------------------------------------
-// Data (kept inline for a single-file demo; extract to /lib in production)
+// Data
 // ---------------------------------------------------------------------------
-
-const navItems = [
-  { label: "Products", href: "/products" },
-  { label: "Technology", href: "/technology" },
-  { label: "About", href: "/about" },
-  { label: "Contact", href: "/contact" },
-];
 
 const trustFeatures = [
   {
     icon: ShieldCheck,
     title: "Certified Quality",
-    copy: "K-FDA, CE, and US-FDA cleared. Every lot traceable to origin, tested against ISO 13485 standards.",
+    copy: "K-FDA and CE cleared. Every lot traceable to origin, tested against ISO 13485 standards.",
   },
   {
     icon: Globe2,
     title: "Global Logistics",
-    copy: "DHL & FedEx express partnerships shipping to 60+ countries. Average door-to-clinic in 4–7 days.",
+    copy: "DHL & FedEx express partnerships shipping to 62 countries. Average door-to-clinic in 4–7 days.",
   },
   {
     icon: Headphones,
@@ -57,55 +55,12 @@ const trustFeatures = [
   },
 ];
 
-const featuredProducts = [
-  {
-    id: "is-iii-active",
-    name: "IS-III active",
-    tagline: "SLA-treated active implant",
-    diameter: "Ø 3.5 – 5.0 mm",
-    length: "7 – 13 mm",
-    connection: "Internal Hex",
-    price: "$ 78.00",
-    badge: "Bestseller",
-  },
-  {
-    id: "ts-iv-sa",
-    name: "TS-IV SA",
-    tagline: "Tapered self-tapping",
-    diameter: "Ø 4.0 – 5.5 mm",
-    length: "8.5 – 13 mm",
-    connection: "Internal Conical",
-    price: "$ 92.00",
-    badge: "New",
-  },
-  {
-    id: "bluediamond-bd",
-    name: "BlueDiamond BD",
-    tagline: "Soft-bone optimized",
-    diameter: "Ø 3.8 – 5.0 mm",
-    length: "7 – 11.5 mm",
-    connection: "Internal Hex",
-    price: "$ 84.00",
-    badge: null,
-  },
-  {
-    id: "superline-sl",
-    name: "SuperLine SL",
-    tagline: "Premium tapered",
-    diameter: "Ø 3.6 – 6.0 mm",
-    length: "7 – 14 mm",
-    connection: "Internal Octa",
-    price: "$ 88.00",
-    badge: "Featured",
-  },
-];
-
 const testimonials = [
   {
     quote:
-      "Switched our practice entirely to Korean implants last year. The osseointegration timeline is consistently faster than what we saw with European brands — and at two-thirds the cost.",
+      "Switched our socket preservation protocol to Korean allografts last year. The predictability of regeneration is consistently better than what we saw with European brands — and at two-thirds the cost.",
     name: "Dr. Marco Beltrán",
-    role: "Implantologist",
+    role: "Periodontist & Implantologist",
     location: "Madrid, Spain",
   },
   {
@@ -117,7 +72,7 @@ const testimonials = [
   },
   {
     quote:
-      "The documentation and traceability is immaculate. Every implant's lot, surface treatment, and QC record is accessible. It's the kind of paper trail our regulators appreciate.",
+      "The documentation and traceability is immaculate. Every membrane's lot, raw material, and QC record is accessible. It's the kind of paper trail our regulators appreciate.",
     name: "Dr. Jonas Weiß",
     role: "Clinic Director",
     location: "Zurich, Switzerland",
@@ -125,11 +80,59 @@ const testimonials = [
 ];
 
 const stats = [
-  { value: "5,000+", label: "Dentists served" },
+  { value: "5,000+", label: "Clinics served" },
   { value: "62", label: "Countries shipped" },
-  { value: "18 yrs", label: "Manufacturing" },
-  { value: "99.2%", label: "Success rate" },
+  { value: "10 yrs", label: "Manufacturing" },
+  { value: "6", label: "Active SKUs" },
 ];
+
+const aboutStats = [
+  { label: "Founded", value: "2016" },
+  { label: "ISO Standard", value: "13485:2016" },
+  { label: "Clearances", value: "K-FDA · CE" },
+  { label: "Export markets", value: "62 countries" },
+];
+
+// Featured: Renew Oss, Titan-X, Diaderm M, Titan Gide
+const featuredSlugs = ["renew-oss", "titan-x", "diaderm-m", "titan-gide"];
+const featuredProducts = featuredSlugs
+  .map((s) => products.find((p) => p.slug === s))
+  .filter((p): p is NonNullable<typeof p> => p !== undefined);
+
+function getSpecLine(p: (typeof products)[0]): string {
+  if (isBoneGraftSpecs(p.specs)) {
+    if (p.specs.remodelingTime)
+      return `${p.specs.remodelingTime} remodeling · ${p.composition}`;
+    if (p.specs.resorption) return `${p.specs.resorption} · ${p.composition}`;
+    return p.composition;
+  }
+  if (isMembraneSpecs(p.specs)) {
+    return `${p.specs.resorptionTime} resorption · ${p.specs.material.split(" ").slice(-1)[0]}`;
+  }
+  return p.composition;
+}
+
+// ---------------------------------------------------------------------------
+// JSON-LD
+// ---------------------------------------------------------------------------
+
+const orgJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "Medistan",
+  url: "https://medistan.co.kr",
+  logo: "https://medistan.co.kr/favicon.svg",
+  description:
+    "Korean manufacturer of dental regenerative materials — bone graft allografts, bovine xenografts, collagen membranes, and pericardium membranes for oral surgeons and periodontists worldwide.",
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Seoul",
+    addressCountry: "KR",
+  },
+  foundingDate: "2016",
+  numberOfEmployees: { "@type": "QuantitativeValue", value: "200" },
+  sameAs: ["https://medistan.co.kr"],
+};
 
 // ---------------------------------------------------------------------------
 // Page
@@ -138,82 +141,23 @@ const stats = [
 export default function HomePage() {
   return (
     <main className="min-h-screen bg-white text-slate-900 antialiased selection:bg-slate-900 selection:text-white">
-      <Header />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(orgJsonLd).replace(/</g, "\\u003c"),
+        }}
+      />
+      <Navbar />
       <Hero />
       <StatsStrip />
       <TrustFeatures />
       <FeaturedProducts />
       <Testimonials />
+      <About />
       <FinalCta />
       <Footer />
       <WhatsAppFloat />
     </main>
-  );
-}
-
-// ---------------------------------------------------------------------------
-// Header
-// ---------------------------------------------------------------------------
-
-function Header() {
-  return (
-    <header className="sticky top-0 z-40 border-b border-slate-200/80 bg-white/80 backdrop-blur-md">
-      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6 lg:h-20 lg:px-10">
-        {/* Logo */}
-        <Link href="/" className="flex items-center gap-2.5">
-          <div className="flex h-8 w-8 items-center justify-center rounded-sm bg-slate-900">
-            <div className="h-3.5 w-3.5 rounded-[2px] bg-white" />
-          </div>
-          <div className="flex flex-col leading-none">
-            <span className="text-[15px] font-semibold tracking-tight text-slate-900">
-              Medistan
-            </span>
-            <span className="text-[10px] font-medium uppercase tracking-[0.18em] text-slate-500">
-              Dental · Seoul
-            </span>
-          </div>
-        </Link>
-
-        {/* Nav */}
-        <nav className="hidden items-center gap-10 md:flex">
-          {navItems.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className="text-sm text-slate-600 transition-colors hover:text-slate-900"
-            >
-              {item.label}
-            </Link>
-          ))}
-        </nav>
-
-        {/* Actions */}
-        <div className="flex items-center gap-2">
-          <Button
-            variant="ghost"
-            size="sm"
-            className="hidden h-9 text-slate-700 hover:bg-slate-100 hover:text-slate-900 lg:inline-flex"
-          >
-            Sign in
-          </Button>
-          <Button
-            size="sm"
-            className="hidden h-9 rounded-full bg-slate-900 px-5 text-white hover:bg-slate-800 md:inline-flex"
-          >
-            Request Quote
-            <ArrowRight className="ml-1.5 h-3.5 w-3.5" />
-          </Button>
-          <Button
-            variant="ghost"
-            size="icon"
-            className="md:hidden"
-            aria-label="Open menu"
-          >
-            <Menu className="h-5 w-5" />
-          </Button>
-        </div>
-      </div>
-    </header>
   );
 }
 
@@ -224,7 +168,6 @@ function Header() {
 function Hero() {
   return (
     <section className="relative overflow-hidden border-b border-slate-200/80 bg-gradient-to-b from-slate-50/50 via-white to-white">
-      {/* Decorative grid */}
       <div
         aria-hidden
         className="absolute inset-0 opacity-[0.35]"
@@ -236,47 +179,56 @@ function Hero() {
             "radial-gradient(ellipse at center, black 30%, transparent 75%)",
         }}
       />
-
       <div className="relative mx-auto grid max-w-7xl grid-cols-1 items-center gap-16 px-6 py-20 lg:grid-cols-12 lg:gap-12 lg:px-10 lg:py-32">
         {/* Copy */}
         <div className="lg:col-span-7">
           <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-3 py-1.5 text-xs font-medium text-slate-600 shadow-sm">
             <span className="flex h-1.5 w-1.5 rounded-full bg-emerald-500" />
-            K-FDA · CE · US-FDA cleared
+            K-FDA · CE cleared
           </div>
 
           <h1 className="font-serif text-[2.5rem] font-normal leading-[1.05] tracking-tight text-slate-900 sm:text-6xl lg:text-[4.5rem]">
             Premium Korean
             <br />
-            dental implants.
+            dental regenerative
             <br />
-            <span className="italic text-slate-500">
-              Direct to your clinic,
-            </span>{" "}
-            <span className="italic text-slate-500">worldwide.</span>
+            <span className="italic text-slate-500">materials.</span>
           </h1>
 
-          <p className="mt-8 max-w-xl text-base leading-relaxed text-slate-600 sm:text-lg">
-            Eighteen years of precision manufacturing in Seoul. Factory-direct
-            wholesale for dentists, clinics, and distributors in 62 countries —
-            with clinical support that answers when you call.
+          <p className="mt-5 max-w-lg font-serif text-xl font-normal italic leading-snug tracking-tight text-slate-500 sm:text-2xl">
+            Allografts, xenografts, and barrier membranes — direct to your
+            clinic, worldwide.
+          </p>
+
+          <p className="mt-6 max-w-xl text-base leading-relaxed text-slate-600 sm:text-lg">
+            Ten years of precision manufacturing in South Korea.
+            Factory-direct wholesale of bone graft materials and barrier
+            membranes for oral surgeons, periodontists, and implantologists in
+            62 countries — with clinical support that answers when you call.
           </p>
 
           <div className="mt-10 flex flex-wrap items-center gap-3">
-            <Button
-              size="lg"
-              className="h-12 rounded-full bg-slate-900 px-7 text-[15px] text-white shadow-sm hover:bg-slate-800"
+            <Link
+              href="/products"
+              className={cn(
+                buttonVariants({ size: "lg" }),
+                "h-12 rounded-full bg-slate-900 px-7 text-[15px] text-white shadow-sm hover:bg-slate-800"
+              )}
             >
               Explore Catalog
               <ArrowRight className="ml-2 h-4 w-4" />
-            </Button>
-            <Button
-              variant="outline"
-              size="lg"
-              className="h-12 rounded-full border-slate-300 bg-white px-7 text-[15px] text-slate-900 hover:bg-slate-50"
+            </Link>
+            <a
+              href={waMsg.homepageQuote}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={cn(
+                buttonVariants({ variant: "outline", size: "lg" }),
+                "h-12 rounded-full border-slate-300 bg-white px-7 text-[15px] text-slate-900 hover:bg-slate-50"
+              )}
             >
-              Download Price List
-            </Button>
+              Request a Quote
+            </a>
           </div>
 
           <div className="mt-12 flex flex-wrap items-center gap-x-8 gap-y-3 text-xs uppercase tracking-[0.16em] text-slate-500">
@@ -291,105 +243,96 @@ function Hero() {
 
         {/* Visual */}
         <div className="relative lg:col-span-5">
-          <ImplantVisual />
+          <RegenerativeVisual />
         </div>
       </div>
     </section>
   );
 }
 
-// Minimalist SVG representation of a premium dental implant — no external image dependency.
-function ImplantVisual() {
+function RegenerativeVisual() {
   return (
     <div className="relative mx-auto aspect-square w-full max-w-md">
-      {/* Background halo */}
       <div className="absolute inset-0 rounded-full bg-gradient-to-br from-sky-50 via-slate-50 to-white" />
       <div className="absolute inset-8 rounded-full border border-slate-200/80" />
       <div className="absolute inset-16 rounded-full border border-slate-200/60" />
 
-      {/* Measurement ticks */}
-      <div className="absolute left-6 top-1/2 -translate-y-1/2 space-y-2 text-[10px] font-medium uppercase tracking-[0.2em] text-slate-400">
-        <div>Ø 4.5mm</div>
+      {/* Membrane annotation — left */}
+      <div className="absolute left-4 top-1/3 -translate-y-1/2 space-y-1.5 text-[10px] font-medium uppercase tracking-[0.18em] text-slate-400">
+        <div>Type I Atelocollagen</div>
         <div className="h-px w-8 bg-slate-300" />
-        <div>L 11.5mm</div>
-      </div>
-      <div className="absolute right-6 top-12 text-right text-[10px] font-medium uppercase tracking-[0.2em] text-slate-400">
-        <div>Grade 4</div>
-        <div className="ml-auto mt-1 h-px w-8 bg-slate-300" />
-        <div className="mt-1">Ti — SLA</div>
+        <div>4-mo resorption</div>
+        <div className="h-px w-8 bg-slate-300" />
+        <div>20×30 mm</div>
       </div>
 
-      {/* Implant SVG */}
+      {/* Bone graft annotation — right */}
+      <div className="absolute right-4 top-12 text-right text-[10px] font-medium uppercase tracking-[0.18em] text-slate-400">
+        <div>0.25–1.0 mm</div>
+        <div className="ml-auto mt-1 h-px w-8 bg-slate-300" />
+        <div className="mt-1">80/20 C/C</div>
+        <div className="ml-auto mt-1 h-px w-8 bg-slate-300" />
+        <div className="mt-1">Gamma Sterilized</div>
+      </div>
+
       <svg
-        viewBox="0 0 200 360"
-        className="absolute left-1/2 top-1/2 h-[78%] w-auto -translate-x-1/2 -translate-y-1/2"
+        viewBox="0 0 200 220"
+        className="absolute left-1/2 top-1/2 h-[72%] w-auto -translate-x-1/2 -translate-y-1/2"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
         aria-hidden
       >
         <defs>
-          <linearGradient id="ti-body" x1="0" y1="0" x2="1" y2="0">
-            <stop offset="0%" stopColor="#CBD5E1" />
-            <stop offset="45%" stopColor="#F1F5F9" />
-            <stop offset="55%" stopColor="#E2E8F0" />
+          <linearGradient id="mem-grad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stopColor="#F8FAFC" />
+            <stop offset="60%" stopColor="#E2E8F0" />
+            <stop offset="100%" stopColor="#CBD5E1" />
+          </linearGradient>
+          <linearGradient id="part-grad" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stopColor="#E2E8F0" />
             <stop offset="100%" stopColor="#94A3B8" />
           </linearGradient>
-          <linearGradient id="ti-abut" x1="0" y1="0" x2="1" y2="0">
-            <stop offset="0%" stopColor="#94A3B8" />
-            <stop offset="50%" stopColor="#E2E8F0" />
-            <stop offset="100%" stopColor="#64748B" />
-          </linearGradient>
+          <filter id="soft-shadow">
+            <feDropShadow dx="0" dy="2" stdDeviation="3" floodOpacity="0.08" />
+          </filter>
         </defs>
 
-        {/* Abutment */}
+        {/* Membrane — draped sheet */}
         <path
-          d="M75 10 L125 10 L120 45 L80 45 Z"
-          fill="url(#ti-abut)"
+          d="M20 60 Q50 42 100 50 Q150 58 180 44 L178 100 Q148 112 100 106 Q52 100 22 114 Z"
+          fill="url(#mem-grad)"
           stroke="#94A3B8"
-          strokeWidth="0.5"
+          strokeWidth="0.8"
+          filter="url(#soft-shadow)"
         />
-        {/* Platform */}
-        <rect
-          x="72"
-          y="45"
-          width="56"
-          height="12"
-          fill="url(#ti-body)"
-          stroke="#94A3B8"
-          strokeWidth="0.5"
-        />
-        {/* Threaded body */}
-        <path
-          d="M78 57
-             L78 310
-             L100 340
-             L122 310
-             L122 57 Z"
-          fill="url(#ti-body)"
-          stroke="#94A3B8"
-          strokeWidth="0.5"
-        />
-        {/* Thread lines */}
-        {Array.from({ length: 22 }).map((_, i) => (
+        {/* Collagen fiber lines on membrane */}
+        {[68, 78, 88, 98].map((y, i) => (
           <path
             key={i}
-            d={`M78 ${70 + i * 11} L122 ${70 + i * 11 - 4}`}
-            stroke="#64748B"
-            strokeWidth="0.6"
-            opacity={i > 18 ? 0.5 : 0.85}
+            d={`M28 ${y} Q100 ${y - 6} 172 ${y - 2}`}
+            fill="none"
+            stroke="#94A3B8"
+            strokeWidth="0.5"
+            opacity="0.45"
           />
         ))}
-        {/* Apex */}
-        <circle cx="100" cy="342" r="1.5" fill="#475569" />
+
+        {/* Bone graft particulate — below membrane */}
+        <ellipse cx="55" cy="148" rx="22" ry="13" fill="url(#part-grad)" opacity="0.8" transform="rotate(-20 55 148)" />
+        <ellipse cx="100" cy="160" rx="26" ry="14" fill="url(#part-grad)" opacity="0.85" transform="rotate(10 100 160)" />
+        <ellipse cx="148" cy="150" rx="20" ry="12" fill="url(#part-grad)" opacity="0.75" transform="rotate(-35 148 150)" />
+        <ellipse cx="75" cy="178" rx="18" ry="11" fill="url(#part-grad)" opacity="0.70" transform="rotate(25 75 178)" />
+        <ellipse cx="130" cy="176" rx="22" ry="12" fill="url(#part-grad)" opacity="0.80" transform="rotate(-10 130 176)" />
+        <ellipse cx="100" cy="200" rx="15" ry="9" fill="url(#part-grad)" opacity="0.65" transform="rotate(5 100 200)" />
       </svg>
 
       {/* Floating badges */}
       <div className="absolute bottom-6 left-6 flex items-center gap-2 rounded-full border border-slate-200 bg-white/90 px-3 py-1.5 text-[11px] font-medium text-slate-700 shadow-sm backdrop-blur">
         <Check className="h-3.5 w-3.5 text-emerald-600" />
-        Lot 24-A8291
+        Lot 24-GBR01
       </div>
       <div className="absolute bottom-6 right-6 rounded-full border border-slate-200 bg-white/90 px-3 py-1.5 text-[11px] font-medium text-slate-700 shadow-sm backdrop-blur">
-        Made in Seoul
+        Made in South Korea
       </div>
     </div>
   );
@@ -424,21 +367,26 @@ function StatsStrip() {
 
 function TrustFeatures() {
   return (
-    <section className="border-b border-slate-200/80 bg-white py-20 lg:py-28">
+    <section
+      id="technology"
+      className="scroll-mt-20 border-b border-slate-200/80 bg-white py-20 lg:py-28"
+    >
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
         <div className="mb-16 flex flex-col items-start gap-6 lg:flex-row lg:items-end lg:justify-between">
           <div className="max-w-2xl">
             <div className="mb-4 text-xs font-medium uppercase tracking-[0.2em] text-slate-500">
-              — Why dentists choose us
+              — Why surgeons choose us
             </div>
             <h2 className="font-serif text-4xl font-normal leading-tight tracking-tight text-slate-900 lg:text-5xl">
               Manufacturing discipline,
               <br />
-              <span className="italic text-slate-500">without the middlemen.</span>
+              <span className="italic text-slate-500">
+                without the middlemen.
+              </span>
             </h2>
           </div>
           <Link
-            href="/about"
+            href="/#about"
             className="inline-flex items-center gap-1.5 text-sm font-medium text-slate-900 underline-offset-4 hover:underline"
           >
             Our certifications
@@ -478,7 +426,10 @@ function TrustFeatures() {
 
 function FeaturedProducts() {
   return (
-    <section className="border-b border-slate-200/80 bg-slate-50/50 py-20 lg:py-28">
+    <section
+      id="products"
+      className="scroll-mt-20 border-b border-slate-200/80 bg-slate-50/50 py-20 lg:py-28"
+    >
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
         <div className="mb-14 flex items-end justify-between">
           <div>
@@ -486,14 +437,14 @@ function FeaturedProducts() {
               — Featured catalog
             </div>
             <h2 className="font-serif text-4xl font-normal leading-tight tracking-tight text-slate-900 lg:text-5xl">
-              Built for every bone density.
+              Built for every indication.
             </h2>
           </div>
           <Link
             href="/products"
             className="hidden items-center gap-1.5 text-sm font-medium text-slate-900 underline-offset-4 hover:underline sm:inline-flex"
           >
-            View all 48 products
+            View all 6 products
             <ArrowUpRight className="h-3.5 w-3.5" />
           </Link>
         </div>
@@ -506,12 +457,16 @@ function FeaturedProducts() {
             >
               <CardHeader className="p-0">
                 <div className="relative aspect-[4/5] overflow-hidden bg-gradient-to-b from-slate-50 to-white">
-                  {p.badge && (
-                    <Badge className="absolute left-4 top-4 z-10 rounded-full border-0 bg-slate-900 px-2.5 py-0.5 text-[10px] font-medium uppercase tracking-wider text-white hover:bg-slate-900">
-                      {p.badge}
-                    </Badge>
-                  )}
-                  <MiniImplantGraphic />
+                  <Badge className="absolute left-4 top-4 z-10 rounded-full border-0 bg-slate-900 px-2.5 py-0.5 text-[10px] font-medium uppercase tracking-wider text-white hover:bg-slate-900">
+                    {p.category === "bone-graft" ? "Bone Graft" : "Membrane"}
+                  </Badge>
+                  <Image
+                    src={p.image}
+                    alt={`${p.name} — ${p.subcategory} for guided bone regeneration`}
+                    fill
+                    className="object-contain p-6"
+                    unoptimized
+                  />
                 </div>
               </CardHeader>
 
@@ -521,100 +476,42 @@ function FeaturedProducts() {
                     {p.name}
                   </CardTitle>
                   <CardDescription className="mt-0.5 text-xs text-slate-500">
-                    {p.tagline}
+                    {p.subcategory}
                   </CardDescription>
                 </div>
-
-                <dl className="space-y-1.5 border-t border-slate-100 pt-3 text-xs">
-                  <div className="flex justify-between text-slate-600">
-                    <dt>Diameter</dt>
-                    <dd className="font-medium text-slate-900">{p.diameter}</dd>
-                  </div>
-                  <div className="flex justify-between text-slate-600">
-                    <dt>Length</dt>
-                    <dd className="font-medium text-slate-900">{p.length}</dd>
-                  </div>
-                  <div className="flex justify-between text-slate-600">
-                    <dt>Connection</dt>
-                    <dd className="font-medium text-slate-900">{p.connection}</dd>
-                  </div>
-                </dl>
+                <p className="border-t border-slate-100 pt-3 text-xs leading-relaxed text-slate-600">
+                  {getSpecLine(p)}
+                </p>
               </CardContent>
 
-              <CardFooter className="flex items-center justify-between border-t border-slate-100 p-5">
-                <div>
-                  <div className="text-[10px] uppercase tracking-widest text-slate-500">
-                    From
-                  </div>
-                  <div className="text-[15px] font-semibold tracking-tight text-slate-900">
-                    {p.price}
-                  </div>
-                </div>
-                <Link href={`/products/${p.id}`}>
-                  <Button
-                    size="sm"
-                    variant="outline"
-                    className="h-9 rounded-full border-slate-300 bg-white text-xs font-medium text-slate-900 hover:bg-slate-900 hover:text-white"
-                  >
-                    View Details
-                    <ArrowRight className="ml-1.5 h-3 w-3" />
-                  </Button>
+              <CardFooter className="flex items-center justify-between gap-2 border-t border-slate-100 p-5">
+                <Link
+                  href={`/products/${p.slug}`}
+                  className={cn(
+                    buttonVariants({ variant: "outline", size: "sm" }),
+                    "h-9 rounded-full border-slate-300 bg-white text-xs font-medium text-slate-900 hover:bg-slate-900 hover:text-white"
+                  )}
+                >
+                  View Details
+                  <ArrowRight className="ml-1.5 h-3 w-3" />
                 </Link>
+                <a
+                  href={waMsg.productCard(p.name)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={cn(
+                    buttonVariants({ size: "sm" }),
+                    "h-9 rounded-full bg-slate-900 px-4 text-xs font-medium text-white hover:bg-slate-800"
+                  )}
+                >
+                  Quote
+                </a>
               </CardFooter>
             </Card>
           ))}
         </div>
       </div>
     </section>
-  );
-}
-
-function MiniImplantGraphic() {
-  return (
-    <svg
-      viewBox="0 0 120 180"
-      className="absolute left-1/2 top-1/2 h-[78%] w-auto -translate-x-1/2 -translate-y-1/2"
-      fill="none"
-      aria-hidden
-    >
-      <defs>
-        <linearGradient id="mini-body" x1="0" y1="0" x2="1" y2="0">
-          <stop offset="0%" stopColor="#CBD5E1" />
-          <stop offset="50%" stopColor="#F1F5F9" />
-          <stop offset="100%" stopColor="#94A3B8" />
-        </linearGradient>
-      </defs>
-      <path
-        d="M45 5 L75 5 L72 22 L48 22 Z"
-        fill="url(#mini-body)"
-        stroke="#94A3B8"
-        strokeWidth="0.4"
-      />
-      <rect
-        x="43"
-        y="22"
-        width="34"
-        height="7"
-        fill="url(#mini-body)"
-        stroke="#94A3B8"
-        strokeWidth="0.4"
-      />
-      <path
-        d="M46 29 L46 155 L60 172 L74 155 L74 29 Z"
-        fill="url(#mini-body)"
-        stroke="#94A3B8"
-        strokeWidth="0.4"
-      />
-      {Array.from({ length: 16 }).map((_, i) => (
-        <path
-          key={i}
-          d={`M46 ${36 + i * 7.5} L74 ${36 + i * 7.5 - 2}`}
-          stroke="#64748B"
-          strokeWidth="0.5"
-          opacity="0.75"
-        />
-      ))}
-    </svg>
   );
 }
 
@@ -651,14 +548,11 @@ function Testimonials() {
                 aria-hidden
               />
               <blockquote className="mt-6 font-serif text-lg leading-relaxed text-slate-800">
-                “{t.quote}”
+                &ldquo;{t.quote}&rdquo;
               </blockquote>
               <figcaption className="mt-8 flex items-center gap-3 border-t border-slate-100 pt-5">
                 <div className="flex h-10 w-10 items-center justify-center rounded-full bg-slate-900 text-sm font-medium text-white">
-                  {t.name
-                    .split(" ")
-                    .slice(-1)[0]
-                    .charAt(0)}
+                  {t.name.split(" ").slice(-1)[0].charAt(0)}
                 </div>
                 <div>
                   <div className="text-sm font-semibold text-slate-900">
@@ -678,12 +572,81 @@ function Testimonials() {
 }
 
 // ---------------------------------------------------------------------------
+// About
+// ---------------------------------------------------------------------------
+
+function About() {
+  return (
+    <section
+      id="about"
+      className="scroll-mt-20 border-b border-slate-200/80 bg-slate-50/50 py-20 lg:py-28"
+    >
+      <div className="mx-auto max-w-7xl px-6 lg:px-10">
+        <div className="grid grid-cols-1 gap-16 lg:grid-cols-2 lg:gap-24">
+          <div>
+            <div className="mb-4 text-xs font-medium uppercase tracking-[0.2em] text-slate-500">
+              — Our story
+            </div>
+            <h2 className="font-serif text-4xl font-normal leading-tight tracking-tight text-slate-900 lg:text-5xl">
+              Ten years of
+              <br />
+              <span className="italic text-slate-500">Korean precision.</span>
+            </h2>
+            <p className="mt-8 text-base leading-relaxed text-slate-600">
+              Founded in 2016, Medistan has grown from a single South Korean
+              manufacturing facility into one of Korea&apos;s most trusted
+              exporters of dental regenerative materials. Every bone graft and
+              barrier membrane is processed, tested, and packed under one roof —
+              so traceability is never in question.
+            </p>
+            <p className="mt-4 text-base leading-relaxed text-slate-600">
+              Our clinical advisory teams work directly with oral surgeons,
+              periodontists, and implantologists across 62 countries to refine
+              our allograft processing, collagen purification, and pericardium
+              treatment methods — all backed by K-FDA and CE clearance.
+            </p>
+            <a
+              href={waMsg.homepageQuote}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-8 inline-flex items-center gap-1.5 text-sm font-medium text-slate-900 underline-offset-4 hover:underline"
+            >
+              Get in touch with our clinical team
+              <ArrowUpRight className="h-3.5 w-3.5" />
+            </a>
+          </div>
+
+          <div className="grid grid-cols-2 gap-4">
+            {aboutStats.map((item) => (
+              <div
+                key={item.label}
+                className="flex flex-col justify-between rounded-2xl border border-slate-200 bg-white p-6"
+              >
+                <div className="font-serif text-2xl font-normal tracking-tight text-slate-900 lg:text-3xl">
+                  {item.value}
+                </div>
+                <div className="mt-3 text-xs uppercase tracking-[0.18em] text-slate-500">
+                  {item.label}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ---------------------------------------------------------------------------
 // Final CTA
 // ---------------------------------------------------------------------------
 
 function FinalCta() {
   return (
-    <section className="relative overflow-hidden bg-slate-950 text-white">
+    <section
+      id="contact"
+      className="scroll-mt-20 relative overflow-hidden bg-slate-950 text-white"
+    >
       <div
         aria-hidden
         className="absolute inset-0 opacity-[0.08]"
@@ -710,21 +673,30 @@ function FinalCta() {
             </p>
           </div>
           <div className="flex flex-col gap-3 lg:col-span-4 lg:items-end">
-            <Button
-              size="lg"
-              className="h-12 w-full rounded-full bg-white px-7 text-[15px] text-slate-900 hover:bg-slate-100 lg:w-auto"
+            <a
+              href={waMsg.homepageQuote}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={cn(
+                buttonVariants({ size: "lg" }),
+                "h-12 w-full rounded-full bg-white px-7 text-[15px] text-slate-900 hover:bg-slate-100 lg:w-auto"
+              )}
             >
               Request Custom Quote
               <ArrowRight className="ml-2 h-4 w-4" />
-            </Button>
-            <Button
-              size="lg"
-              variant="outline"
-              className="h-12 w-full rounded-full border-slate-700 bg-transparent px-7 text-[15px] text-white hover:bg-slate-900 hover:text-white lg:w-auto"
+            </a>
+            <a
+              href={waMsg.homepageQuote}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={cn(
+                buttonVariants({ variant: "outline", size: "lg" }),
+                "h-12 w-full rounded-full border-slate-700 bg-transparent px-7 text-[15px] text-white hover:bg-slate-900 hover:text-white lg:w-auto"
+              )}
             >
               <MessageCircle className="mr-2 h-4 w-4" />
               Chat on WhatsApp
-            </Button>
+            </a>
           </div>
         </div>
       </div>
@@ -740,30 +712,107 @@ function Footer() {
   return (
     <footer className="bg-white">
       <div className="mx-auto max-w-7xl px-6 py-12 lg:px-10">
-        <div className="flex flex-col items-start justify-between gap-6 border-t border-slate-200 pt-8 md:flex-row md:items-center">
-          <div className="flex items-center gap-2.5">
-            <div className="flex h-7 w-7 items-center justify-center rounded-sm bg-slate-900">
-              <div className="h-3 w-3 rounded-[2px] bg-white" />
+        <div className="grid grid-cols-2 gap-8 border-t border-slate-200 pt-10 sm:grid-cols-4 lg:grid-cols-5">
+          {/* Brand */}
+          <div className="col-span-2 sm:col-span-4 lg:col-span-2">
+            <div className="flex items-center gap-2.5">
+              <div className="flex h-7 w-7 items-center justify-center rounded-sm bg-slate-900">
+                <div className="h-3 w-3 rounded-[2px] bg-white" />
+              </div>
+              <span className="text-sm font-semibold tracking-tight text-slate-900">
+                Medistan
+              </span>
             </div>
-            <span className="text-sm font-semibold tracking-tight text-slate-900">
-              Medistan
-            </span>
-            <span className="text-xs text-slate-500">
-              · Seoul, Republic of Korea
-            </span>
+            <p className="mt-3 max-w-xs text-xs leading-relaxed text-slate-500">
+              Korean manufacturer of dental regenerative materials. Factory-direct
+              wholesale to oral surgeons in 62 countries.
+            </p>
+            <div className="mt-4 flex flex-wrap gap-x-3 gap-y-1 text-[10px] text-slate-400">
+              <span>ISO 13485:2016</span>
+              <span>·</span>
+              <span>K-FDA Licensed</span>
+              <span>·</span>
+              <span>CE 2797</span>
+            </div>
           </div>
-          <div className="flex flex-wrap gap-x-6 gap-y-2 text-xs text-slate-500">
-            <span>ISO 13485:2016</span>
-            <span>·</span>
-            <span>K-FDA Licensed</span>
-            <span>·</span>
-            <span>CE 2797</span>
-            <span>·</span>
-            <span>US-FDA 510(k)</span>
+
+          {/* Products column */}
+          <div>
+            <h3 className="mb-4 text-[10px] font-semibold uppercase tracking-[0.18em] text-slate-900">
+              Products
+            </h3>
+            <ul className="space-y-2.5 text-xs text-slate-500">
+              <li>
+                <Link href="/products" className="hover:text-slate-900">
+                  All Products
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/products/bone-graft-material"
+                  className="hover:text-slate-900"
+                >
+                  Bone Graft Materials
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/products/membrane"
+                  className="hover:text-slate-900"
+                >
+                  Membranes
+                </Link>
+              </li>
+            </ul>
           </div>
-          <div className="text-xs text-slate-500">
-            © 2026 Medistan Co., Ltd.
+
+          {/* Bone Grafts column */}
+          <div>
+            <h3 className="mb-4 text-[10px] font-semibold uppercase tracking-[0.18em] text-slate-900">
+              Bone Grafts
+            </h3>
+            <ul className="space-y-2.5 text-xs text-slate-500">
+              {products
+                .filter((p) => p.category === "bone-graft")
+                .map((p) => (
+                  <li key={p.slug}>
+                    <Link
+                      href={`/products/${p.slug}`}
+                      className="hover:text-slate-900"
+                    >
+                      {p.name}
+                    </Link>
+                  </li>
+                ))}
+            </ul>
           </div>
+
+          {/* Membranes column */}
+          <div>
+            <h3 className="mb-4 text-[10px] font-semibold uppercase tracking-[0.18em] text-slate-900">
+              Membranes
+            </h3>
+            <ul className="space-y-2.5 text-xs text-slate-500">
+              {products
+                .filter((p) => p.category === "membrane")
+                .map((p) => (
+                  <li key={p.slug}>
+                    <Link
+                      href={`/products/${p.slug}`}
+                      className="hover:text-slate-900"
+                    >
+                      {p.name}
+                    </Link>
+                  </li>
+                ))}
+            </ul>
+          </div>
+        </div>
+
+        <div className="mt-10 flex flex-col items-start justify-between gap-4 border-t border-slate-100 pt-6 sm:flex-row sm:items-center">
+          <p className="text-xs text-slate-500">
+            © 2026 Medistan Co., Ltd. · Seoul, Republic of Korea
+          </p>
         </div>
       </div>
     </footer>
@@ -771,16 +820,16 @@ function Footer() {
 }
 
 // ---------------------------------------------------------------------------
-// WhatsApp floating button
+// WhatsApp float
 // ---------------------------------------------------------------------------
 
 function WhatsAppFloat() {
   return (
     <a
-      href="https://wa.me/821012345678"
+      href={waMsg.floating}
       target="_blank"
       rel="noopener noreferrer"
-      aria-label="Chat with us on WhatsApp"
+      aria-label="Chat with Medistan on WhatsApp"
       className="group fixed bottom-6 right-6 z-50 flex items-center gap-2 rounded-full bg-[#25D366] pl-4 pr-5 py-3 text-sm font-semibold text-white shadow-lg shadow-emerald-600/20 transition-all hover:scale-105 hover:shadow-xl"
     >
       <span className="relative flex h-6 w-6 items-center justify-center">

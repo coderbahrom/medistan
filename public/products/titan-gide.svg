@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="800" viewBox="0 0 800 800">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f1f5f9"/>
+      <stop offset="100%" stop-color="#e2e8f0"/>
+    </linearGradient>
+    <linearGradient id="membrane" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f8fafc"/>
+      <stop offset="40%" stop-color="#e2e8f0"/>
+      <stop offset="100%" stop-color="#b0bec5"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="800" fill="url(#bg)"/>
+  <!-- Dense pericardium sheet — slightly thicker/flatter than Diaderm -->
+  <rect x="215" y="310" width="370" height="190" rx="6" fill="url(#membrane)" stroke="#94a3b8" stroke-width="2"/>
+  <!-- Multi-directional dense fiber texture -->
+  <line x1="225" y1="330" x2="575" y2="330" stroke="#94a3b8" stroke-width="0.9" opacity="0.5"/>
+  <line x1="225" y1="345" x2="575" y2="345" stroke="#94a3b8" stroke-width="0.6" opacity="0.4"/>
+  <line x1="225" y1="358" x2="575" y2="358" stroke="#94a3b8" stroke-width="0.9" opacity="0.5"/>
+  <line x1="225" y1="371" x2="575" y2="371" stroke="#94a3b8" stroke-width="0.6" opacity="0.4"/>
+  <line x1="225" y1="384" x2="575" y2="384" stroke="#94a3b8" stroke-width="0.9" opacity="0.5"/>
+  <line x1="225" y1="397" x2="575" y2="397" stroke="#94a3b8" stroke-width="0.6" opacity="0.4"/>
+  <line x1="225" y1="410" x2="575" y2="410" stroke="#94a3b8" stroke-width="0.9" opacity="0.5"/>
+  <line x1="225" y1="423" x2="575" y2="423" stroke="#94a3b8" stroke-width="0.6" opacity="0.4"/>
+  <line x1="225" y1="436" x2="575" y2="436" stroke="#94a3b8" stroke-width="0.9" opacity="0.5"/>
+  <line x1="225" y1="449" x2="575" y2="449" stroke="#94a3b8" stroke-width="0.6" opacity="0.4"/>
+  <line x1="225" y1="462" x2="575" y2="462" stroke="#94a3b8" stroke-width="0.9" opacity="0.5"/>
+  <line x1="225" y1="475" x2="575" y2="475" stroke="#94a3b8" stroke-width="0.6" opacity="0.4"/>
+  <!-- Cross-fiber diagonal lines for multi-directional effect -->
+  <line x1="240" y1="315" x2="260" y2="495" stroke="#94a3b8" stroke-width="0.5" opacity="0.25"/>
+  <line x1="320" y1="315" x2="340" y2="495" stroke="#94a3b8" stroke-width="0.5" opacity="0.25"/>
+  <line x1="400" y1="315" x2="420" y2="495" stroke="#94a3b8" stroke-width="0.5" opacity="0.25"/>
+  <line x1="480" y1="315" x2="500" y2="495" stroke="#94a3b8" stroke-width="0.5" opacity="0.25"/>
+  <line x1="555" y1="315" x2="575" y2="495" stroke="#94a3b8" stroke-width="0.5" opacity="0.25"/>
+  <!-- Labels -->
+  <text x="400" y="237" font-family="Georgia,serif" font-size="28" fill="#475569" text-anchor="middle" font-style="italic">Titan Gide®</text>
+  <text x="400" y="275" font-family="Arial,sans-serif" font-size="14" fill="#94a3b8" text-anchor="middle">Resorbable Pericardium Membrane · Bovine Pericardium</text>
+  <text x="400" y="558" font-family="Arial,sans-serif" font-size="13" fill="#94a3b8" text-anchor="middle">4–6 mo extended barrier · High tear resistance · Zero-memory</text>
+</svg>

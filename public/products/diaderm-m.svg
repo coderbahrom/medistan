@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="800" viewBox="0 0 800 800">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f1f5f9"/>
+      <stop offset="100%" stop-color="#e2e8f0"/>
+    </linearGradient>
+    <linearGradient id="membrane" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f8fafc"/>
+      <stop offset="50%" stop-color="#e2e8f0"/>
+      <stop offset="100%" stop-color="#cbd5e1"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="800" fill="url(#bg)"/>
+  <!-- Draped membrane sheet -->
+  <path d="M220 320 Q280 295 340 305 Q400 315 460 300 Q520 285 580 310 L575 490 Q520 465 460 478 Q400 490 340 478 Q280 490 225 470 Z" fill="url(#membrane)" stroke="#94a3b8" stroke-width="1.5"/>
+  <!-- Collagen fiber texture -->
+  <path d="M240 340 Q310 330 380 340 Q450 350 520 335" fill="none" stroke="#94a3b8" stroke-width="0.8" opacity="0.5"/>
+  <path d="M235 360 Q305 350 375 360 Q445 370 515 355" fill="none" stroke="#94a3b8" stroke-width="0.8" opacity="0.5"/>
+  <path d="M232 380 Q302 370 372 380 Q442 390 512 375" fill="none" stroke="#94a3b8" stroke-width="0.8" opacity="0.4"/>
+  <path d="M230 400 Q300 390 370 400 Q440 410 510 395" fill="none" stroke="#94a3b8" stroke-width="0.8" opacity="0.5"/>
+  <path d="M230 420 Q300 410 370 420 Q440 430 510 415" fill="none" stroke="#94a3b8" stroke-width="0.8" opacity="0.4"/>
+  <path d="M232 440 Q302 430 372 440 Q442 450 512 435" fill="none" stroke="#94a3b8" stroke-width="0.8" opacity="0.5"/>
+  <path d="M236 460 Q306 450 376 460 Q446 470 516 455" fill="none" stroke="#94a3b8" stroke-width="0.8" opacity="0.4"/>
+  <!-- Size indicator -->
+  <text x="318" y="540" font-family="Arial,sans-serif" font-size="12" fill="#94a3b8" text-anchor="middle">15×20 mm</text>
+  <text x="400" y="540" font-family="Arial,sans-serif" font-size="12" fill="#94a3b8" text-anchor="middle">15×30 mm</text>
+  <text x="484" y="540" font-family="Arial,sans-serif" font-size="12" fill="#94a3b8" text-anchor="middle">20×30 mm</text>
+  <!-- Labels -->
+  <text x="400" y="240" font-family="Georgia,serif" font-size="28" fill="#475569" text-anchor="middle" font-style="italic">Diaderm® M</text>
+  <text x="400" y="278" font-family="Arial,sans-serif" font-size="14" fill="#94a3b8" text-anchor="middle">Resorbable Collagen Membrane · Type I Porcine Atelocollagen</text>
+  <text x="400" y="575" font-family="Arial,sans-serif" font-size="13" fill="#94a3b8" text-anchor="middle">3–4 mo resorption · Flexible, high draping effect</text>
+</svg>
