@@ -5,6 +5,12 @@ import { Navbar } from "@/components/navbar";
 import { CategoryView, type FilterGroup } from "@/components/category-view";
 import { getProductsByCategory, getProductBySlug } from "@/data/products";
 import { waMsg } from "@/lib/whatsapp";
+import { getDictionary, hasLocale, locales } from "../../dictionaries";
+import { notFound } from "next/navigation";
+
+export async function generateStaticParams() {
+  return locales.map((lang) => ({ lang }));
+}
 
 export const metadata: Metadata = {
   title: "Dental Bone Graft Materials — Allografts & Xenografts",
@@ -24,12 +30,7 @@ const breadcrumbJsonLd = {
   itemListElement: [
     { "@type": "ListItem", position: 1, name: "Home", item: "https://medistan.co.kr" },
     { "@type": "ListItem", position: 2, name: "Products", item: "https://medistan.co.kr/products" },
-    {
-      "@type": "ListItem",
-      position: 3,
-      name: "Bone Graft Materials",
-      item: "https://medistan.co.kr/products/bone-graft-material",
-    },
+    { "@type": "ListItem", position: 3, name: "Bone Graft Materials", item: "https://medistan.co.kr/products/bone-graft-material" },
   ],
 };
 
@@ -86,15 +87,10 @@ const filterGroups: FilterGroup[] = [
   },
 ];
 
-const boneGraftProducts = getProductsByCategory("bone-graft");
-const relatedMembranes = (["diaderm-m", "titan-gide"] as const)
-  .map((s) => getProductBySlug(s))
-  .filter((p): p is NonNullable<typeof p> => p !== undefined);
-
 const faqItems = [
   {
     q: "What is the difference between allograft and xenograft?",
-    a: "Allografts are derived from human bone (cadaveric) and processed to preserve the mineral and protein matrix. They integrate naturally and remodel as new bone. Xenografts are derived from bovine (cow) bone mineral — all organic material is removed, leaving only the hydroxyapatite scaffold. Xenografts resorb very slowly, making them ideal where long-term volume stability is the priority (e.g., aesthetic zone augmentation).",
+    a: "Allografts are derived from human bone (cadaveric) and processed to preserve the mineral and protein matrix. They integrate naturally and remodel as new bone. Xenografts are derived from bovine (cow) bone mineral — all organic material is removed, leaving only the hydroxyapatite scaffold. Xenografts resorb very slowly, making them ideal where long-term volume stability is the priority.",
   },
   {
     q: "How long does a bone graft take to integrate?",
@@ -102,70 +98,64 @@ const faqItems = [
   },
   {
     q: "Do I always need a membrane with a bone graft?",
-    a: "In most guided bone regeneration (GBR) cases, a membrane is strongly recommended to prevent soft tissue ingrowth into the graft site. Exceptions include intra-bony defects with three or four walls, where the surrounding bone walls provide natural containment. For extraction sockets and ridge augmentation procedures, a membrane significantly improves predictability.",
+    a: "In most guided bone regeneration (GBR) cases, a membrane is strongly recommended to prevent soft tissue ingrowth into the graft site. Exceptions include intra-bony defects with three or four walls. For extraction sockets and ridge augmentation procedures, a membrane significantly improves predictability.",
   },
   {
     q: "Which bone graft is best for socket preservation?",
-    a: "Renew Oss™ (allograft particulate) is the most common choice for socket preservation due to its 0.25–1.0 mm particle size, which fills irregular socket morphologies easily, and its 3–4 month remodeling timeline that aligns with the standard implant placement delay. Do Bone™ in syringe delivery is also excellent for sockets requiring precise placement without manual mixing.",
+    a: "Renew Oss™ (allograft particulate) is the most common choice for socket preservation due to its 0.25–1.0 mm particle size and its 3–4 month remodeling timeline. Do Bone™ in syringe delivery is also excellent for sockets requiring precise placement.",
   },
   {
     q: "Which bone graft is best for sinus lift?",
-    a: "Both Renew Oss™ and Titan-X®/Titan-B™ are commonly used for sinus lifts. Renew Oss remodels more quickly (3–4 months), which may allow earlier implant placement. Titan-X offers superior volume stability over time and is preferred in cases requiring a high residual ridge height or long-term volumetric predictability in the posterior maxilla.",
+    a: "Both Renew Oss™ and Titan-X®/Titan-B™ are commonly used for sinus lifts. Renew Oss remodels more quickly (3–4 months). Titan-X offers superior volume stability and is preferred in cases requiring long-term volumetric predictability.",
   },
 ];
 
-export default function BoneGraftMaterialPage() {
+const boneGraftProducts = getProductsByCategory("bone-graft");
+const relatedMembranes = (["diaderm-m", "titan-gide"] as const)
+  .map((s) => getProductBySlug(s))
+  .filter((p): p is NonNullable<typeof p> => p !== undefined);
+
+export default async function BoneGraftMaterialPage({
+  params,
+}: {
+  params: Promise<{ lang: string }>;
+}) {
+  const { lang } = await params;
+  if (!hasLocale(lang)) notFound();
+  const dict = await getDictionary(lang);
+
   return (
     <main className="min-h-screen bg-white text-slate-900 antialiased">
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(breadcrumbJsonLd).replace(/</g, "\\u003c"),
-        }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd).replace(/</g, "\\u003c") }}
       />
-      <Navbar />
+      <Navbar lang={lang} t={dict.nav} />
 
-      {/* Breadcrumb */}
-      <nav
-        className="border-b border-slate-100 bg-white px-6 py-3 lg:px-10"
-        aria-label="Breadcrumb"
-      >
+      <nav className="border-b border-slate-100 bg-white px-6 py-3 lg:px-10" aria-label="Breadcrumb">
         <ol className="mx-auto flex max-w-7xl items-center gap-1.5 text-xs text-slate-500">
-          <li>
-            <Link href="/" className="hover:text-slate-900">
-              Home
-            </Link>
-          </li>
+          <li><Link href={`/${lang}`} className="hover:text-slate-900">{dict.productDetail.home}</Link></li>
           <li aria-hidden>/</li>
-          <li>
-            <Link href="/products" className="hover:text-slate-900">
-              Products
-            </Link>
-          </li>
+          <li><Link href={`/${lang}/products`} className="hover:text-slate-900">{dict.nav.products}</Link></li>
           <li aria-hidden>/</li>
-          <li className="font-medium text-slate-900">Bone Graft Materials</li>
+          <li className="font-medium text-slate-900">{dict.nav.boneGraftMaterials}</li>
         </ol>
       </nav>
 
-      {/* Hero */}
       <section className="border-b border-slate-200/80 bg-linear-to-b from-slate-50/60 to-white py-14 lg:py-20">
         <div className="mx-auto max-w-7xl px-6 lg:px-10">
           <div className="mb-3 text-xs font-medium uppercase tracking-[0.2em] text-slate-500">
-            — 4 Products
+            — {dict.products["4products"]}
           </div>
           <h1 className="font-serif text-4xl font-normal leading-tight tracking-tight text-slate-900 lg:text-5xl">
-            Bone Graft Materials
+            {dict.nav.boneGraftMaterials}
           </h1>
           <p className="mt-5 max-w-2xl text-base leading-relaxed text-slate-600">
-            Korean-manufactured bone grafting materials for oral surgeons,
-            periodontists, and implantologists. Three human allografts —
-            particulate, syringe delivery, and high-density cortical — plus a
-            permanent bovine xenograft scaffold. All K-FDA and CE cleared.
+            Korean-manufactured bone grafting materials for oral surgeons, periodontists, and implantologists. Three human allografts — particulate, syringe delivery, and high-density cortical — plus a permanent bovine xenograft scaffold. All K-FDA and CE cleared.
           </p>
         </div>
       </section>
 
-      {/* Main content */}
       <section className="py-12 lg:py-16">
         <div className="mx-auto max-w-7xl px-6 lg:px-10">
           <Suspense>
@@ -176,6 +166,7 @@ export default function BoneGraftMaterialPage() {
               relatedProducts={relatedMembranes}
               categoryWhatsApp={waMsg.boneGraftCategory}
               faqItems={faqItems}
+              lang={lang}
             />
           </Suspense>
         </div>

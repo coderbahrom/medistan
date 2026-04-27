@@ -5,6 +5,12 @@ import { Navbar } from "@/components/navbar";
 import { CategoryView, type FilterGroup } from "@/components/category-view";
 import { getProductsByCategory, getProductBySlug } from "@/data/products";
 import { waMsg } from "@/lib/whatsapp";
+import { getDictionary, hasLocale, locales } from "../../dictionaries";
+import { notFound } from "next/navigation";
+
+export async function generateStaticParams() {
+  return locales.map((lang) => ({ lang }));
+}
 
 export const metadata: Metadata = {
   title: "Dental Barrier Membranes — Collagen & Pericardium",
@@ -24,12 +30,7 @@ const breadcrumbJsonLd = {
   itemListElement: [
     { "@type": "ListItem", position: 1, name: "Home", item: "https://medistan.co.kr" },
     { "@type": "ListItem", position: 2, name: "Products", item: "https://medistan.co.kr/products" },
-    {
-      "@type": "ListItem",
-      position: 3,
-      name: "Membranes",
-      item: "https://medistan.co.kr/products/membrane",
-    },
+    { "@type": "ListItem", position: 3, name: "Membranes", item: "https://medistan.co.kr/products/membrane" },
   ],
 };
 
@@ -81,96 +82,78 @@ const filterGroups: FilterGroup[] = [
   },
 ];
 
+const faqItems = [
+  {
+    q: "What's the difference between collagen and pericardium membranes?",
+    a: "Collagen membranes (like Diaderm® M) are made from porcine atelocollagen, offering excellent flexibility and a 3–4 month resorption that matches standard GBR healing. Pericardium membranes (like Titan Gide®) are made from bovine pericardium — a naturally dense, multi-directional fiber structure that provides superior tear resistance and a longer 4–6 month barrier.",
+  },
+  {
+    q: "How do I choose between resorbable membrane options?",
+    a: "Choose based on defect size, expected healing time, and surgical complexity. For routine socket preservation or small defects: Diaderm® M (collagen, 3–4 mo). For large ridge augmentations or when suturing/tacking is needed: Titan Gide® (pericardium, 4–6 mo).",
+  },
+  {
+    q: "Can I use a membrane without a bone graft?",
+    a: "Yes — in GTR for periodontal defects, a membrane alone is used to exclude epithelial and connective tissue. However, for most GBR bone augmentation procedures, combining a membrane with a bone graft material significantly improves volumetric outcomes.",
+  },
+];
+
 const membraneProducts = getProductsByCategory("membrane");
 const relatedGrafts = (["renew-oss", "titan-x"] as const)
   .map((s) => getProductBySlug(s))
   .filter((p): p is NonNullable<typeof p> => p !== undefined);
 
-const faqItems = [
-  {
-    q: "What's the difference between collagen and pericardium membranes?",
-    a: "Collagen membranes (like Diaderm® M) are made from porcine atelocollagen, offering excellent flexibility and a 3–4 month resorption that matches standard GBR healing. Pericardium membranes (like Titan Gide®) are made from bovine pericardium — a naturally dense, multi-directional fiber structure that provides superior tear resistance and a longer 4–6 month barrier, making them better suited for large or complex augmentations.",
-  },
-  {
-    q: "How do I choose between resorbable membrane options?",
-    a: "Choose based on three factors: defect size, expected healing time, and surgical complexity. For routine socket preservation, extraction site GBR, or small defects: Diaderm® M (collagen, 3–4 mo). For large ridge augmentations, cases requiring suturing or tacking, or when you need 4–6 months of barrier protection: Titan Gide® (pericardium). Pericardium's tear resistance is especially valuable when fixing the membrane with tacks.",
-  },
-  {
-    q: "Can I use a membrane without a bone graft?",
-    a: "Yes — in Guided Tissue Regeneration (GTR) for periodontal defects, a membrane alone (without bone graft) is used to exclude epithelial and connective tissue while allowing PDL cells to repopulate the root surface. However, for most GBR bone augmentation procedures, combining a membrane with a bone graft material significantly improves volumetric outcomes.",
-  },
-  {
-    q: "What is GBR vs GTR?",
-    a: "GBR (Guided Bone Regeneration) uses a barrier membrane to exclude soft tissue from a bone defect, directing bone cells to regenerate lost volume. It's used for ridge augmentation, socket preservation, and peri-implant defects. GTR (Guided Tissue Regeneration) is a periodontal procedure using a barrier membrane to encourage regeneration of the periodontal attachment (cementum, PDL, and alveolar bone) around a tooth root.",
-  },
-  {
-    q: "How long before the membrane resorbs?",
-    a: "Diaderm® M (porcine collagen) resorbs in 3–4 months under normal healing conditions. Titan Gide® (bovine pericardium) provides an extended barrier function of 4–6 months. Resorption timelines can vary based on patient biology, vascularization, and the inflammatory environment. Both membranes are fully resorbable — no membrane retrieval surgery is required.",
-  },
-];
+export default async function MembranePage({
+  params,
+}: {
+  params: Promise<{ lang: string }>;
+}) {
+  const { lang } = await params;
+  if (!hasLocale(lang)) notFound();
+  const dict = await getDictionary(lang);
 
-export default function MembranePage() {
   return (
     <main className="min-h-screen bg-white text-slate-900 antialiased">
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(breadcrumbJsonLd).replace(/</g, "\\u003c"),
-        }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd).replace(/</g, "\\u003c") }}
       />
-      <Navbar />
+      <Navbar lang={lang} t={dict.nav} />
 
-      {/* Breadcrumb */}
-      <nav
-        className="border-b border-slate-100 bg-white px-6 py-3 lg:px-10"
-        aria-label="Breadcrumb"
-      >
+      <nav className="border-b border-slate-100 bg-white px-6 py-3 lg:px-10" aria-label="Breadcrumb">
         <ol className="mx-auto flex max-w-7xl items-center gap-1.5 text-xs text-slate-500">
-          <li>
-            <Link href="/" className="hover:text-slate-900">
-              Home
-            </Link>
-          </li>
+          <li><Link href={`/${lang}`} className="hover:text-slate-900">{dict.productDetail.home}</Link></li>
           <li aria-hidden>/</li>
-          <li>
-            <Link href="/products" className="hover:text-slate-900">
-              Products
-            </Link>
-          </li>
+          <li><Link href={`/${lang}/products`} className="hover:text-slate-900">{dict.nav.products}</Link></li>
           <li aria-hidden>/</li>
-          <li className="font-medium text-slate-900">Membranes</li>
+          <li className="font-medium text-slate-900">{dict.nav.membranes}</li>
         </ol>
       </nav>
 
-      {/* Hero */}
       <section className="border-b border-slate-200/80 bg-linear-to-b from-slate-50/60 to-white py-14 lg:py-20">
         <div className="mx-auto max-w-7xl px-6 lg:px-10">
           <div className="mb-3 text-xs font-medium uppercase tracking-[0.2em] text-slate-500">
-            — 2 Products
+            — {dict.products["2products"]}
           </div>
           <h1 className="font-serif text-4xl font-normal leading-tight tracking-tight text-slate-900 lg:text-5xl">
-            Barrier Membranes
+            {dict.nav.membranes}
           </h1>
           <p className="mt-5 max-w-2xl text-base leading-relaxed text-slate-600">
-            Korean resorbable barrier membranes for guided bone and tissue
-            regeneration. Type I porcine atelocollagen for routine GBR, and
-            bovine pericardium for complex augmentations requiring extended
-            protection and suture strength. Both K-FDA and CE cleared.
+            Korean-manufactured resorbable barrier membranes for GBR and GTR procedures. Type I porcine atelocollagen (3–4 month resorption) and bovine pericardium (4–6 month resorption) — both K-FDA and CE cleared for predictable guided regeneration.
           </p>
         </div>
       </section>
 
-      {/* Main content */}
       <section className="py-12 lg:py-16">
         <div className="mx-auto max-w-7xl px-6 lg:px-10">
           <Suspense>
             <CategoryView
               products={membraneProducts}
               filterGroups={filterGroups}
-              relatedTitle="Pair with a bone graft for complete GBR"
+              relatedTitle="Pair your membrane with a bone graft material"
               relatedProducts={relatedGrafts}
               categoryWhatsApp={waMsg.membraneCategory}
               faqItems={faqItems}
+              lang={lang}
             />
           </Suspense>
         </div>

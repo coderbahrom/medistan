@@ -39,6 +39,7 @@ interface CategoryViewProps {
   relatedProducts: Product[];
   categoryWhatsApp: string;
   faqItems: { q: string; a: string }[];
+  lang?: string;
 }
 
 // ---------------------------------------------------------------------------
@@ -164,6 +165,7 @@ export function CategoryView({
   relatedProducts,
   categoryWhatsApp,
   faqItems,
+  lang = "en",
 }: CategoryViewProps) {
   const router = useRouter();
   const pathname = usePathname();
@@ -379,7 +381,7 @@ export function CategoryView({
                     </p>
                     <div className="flex items-center gap-2">
                       <Link
-                        href={`/products/${p.slug}`}
+                        href={`/${lang}/products/${p.slug}`}
                         className={cn(
                           buttonVariants({ variant: "outline", size: "sm" }),
                           "h-9 flex-1 justify-center rounded-full border-slate-300 text-xs font-medium text-slate-900 hover:bg-slate-900 hover:text-white"
@@ -422,7 +424,7 @@ export function CategoryView({
                 {relatedProducts.map((rp) => (
                   <Link
                     key={rp.slug}
-                    href={`/products/${rp.slug}`}
+                    href={`/${lang}/products/${rp.slug}`}
                     className="flex items-center gap-4 rounded-xl border border-slate-200 bg-white p-4 transition-shadow hover:shadow-md hover:shadow-slate-200/50"
                   >
                     <div className="relative h-14 w-14 shrink-0 overflow-hidden rounded-lg bg-linear-to-br from-slate-50 to-slate-100">
