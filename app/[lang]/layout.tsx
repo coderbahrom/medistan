@@ -37,6 +37,7 @@ export async function generateMetadata({
     ar: "ar_SA",
     fr: "fr_FR",
     de: "de_DE",
+    ru: "ru_RU",
   };
 
   return {
