@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 import { products } from "@/data/products";
 
 const BASE = "https://medistan.co.kr";
-const locales = ["en", "ar", "fr", "de"] as const;
+const locales = ["en", "ar", "fr", "de", "ru"] as const;
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();

@@ -20,6 +20,7 @@ const LOCALES = [
   { code: "ar", label: "العربية" },
   { code: "fr", label: "Français" },
   { code: "de", label: "Deutsch" },
+  { code: "ru", label: "Русский" },
 ] as const;
 
 type NavT = {
