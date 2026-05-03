@@ -17,6 +17,7 @@ import {
 import type { Product } from "@/data/products";
 import { getDictionary, hasLocale, locales } from "../../dictionaries";
 import type { Dictionary } from "../../dictionaries";
+import { ProductQuoteButton } from "./quote-button";
 
 export function generateStaticParams() {
   return locales.flatMap((lang) =>
@@ -69,8 +70,18 @@ function buildSpecRows(product: Product, t: Dictionary["productDetail"]): { labe
     if (s.memory) rows.push({ label: "Memory", value: s.memory });
   }
   if (s.storage) rows.push({ label: "Storage", value: s.storage });
+  if (product.volumes?.length)
+    rows.push({ label: product.volumes[0].endsWith("g") ? "Available Weights" : "Available Volumes", value: product.volumes.join(", ") });
+  if (product.particleSize) {
+    const ps = product.particleSize;
+    rows.push({
+      label: "Particle Size",
+      value: Array.isArray(ps) ? ps.join(", ") : ps,
+    });
+  }
+  if (product.dimensions?.length)
+    rows.push({ label: "Available Sizes", value: product.dimensions.join(", ") });
   if (product.packaging?.length) rows.push({ label: "Packaging", value: product.packaging.join(", ") });
-  if (product.sizes?.length) rows.push({ label: "Available Sizes", value: product.sizes.join(", ") });
   rows.push({ label: "Regulatory Status", value: "K-FDA · CE cleared" });
   return rows;
 }
@@ -133,7 +144,8 @@ export default async function ProductDetailPage({
 
   const specRows = buildSpecRows(product, t);
 
-  const waDetailUrl = `https://wa.me/${process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "821044959591"}?text=${encodeURIComponent(`Hello Medistan, I'd like to inquire about ${product.name} (${categoryLabel}). Quantity: [fill in]. Clinic/Country: [fill in]. Any specific size/packaging requirements: [fill in].`)}`;
+  const waNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "821044959591";
+  const sizeOptions = product.volumes ?? product.dimensions ?? [];
 
   const medicalDeviceJsonLd = {
     "@context": "https://schema.org",
@@ -214,15 +226,13 @@ export default async function ProductDetailPage({
               </div>
 
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-                <a
-                  href={waDetailUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={cn(buttonVariants({ size: "lg" }), "h-12 flex-1 rounded-full bg-slate-900 px-6 text-[15px] text-white hover:bg-slate-800")}
-                >
-                  <MessageCircle className="mr-2 h-4 w-4" />
-                  {t.requestQuote}
-                </a>
+                <ProductQuoteButton
+                  productName={product.name}
+                  categoryLabel={categoryLabel}
+                  sizeOptions={sizeOptions}
+                  waNumber={waNumber}
+                  label={t.requestQuote}
+                />
                 <button
                   type="button"
                   className={cn(buttonVariants({ variant: "outline", size: "lg" }), "h-12 rounded-full border-slate-300 px-6 text-[15px] text-slate-700")}
@@ -264,12 +274,34 @@ export default async function ProductDetailPage({
                     ))}
                   </ul>
                 </div>
-                {product.sizes && (
+                {(product.volumes && product.volumes.length > 0) && (
+                  <div className="mt-6">
+                    <h3 className="mb-2 text-sm font-semibold text-slate-900">
+                      {product.volumes[0].endsWith("g") ? "Available Weights" : "Available Volumes"}
+                    </h3>
+                    <div className="flex flex-wrap gap-1.5">
+                      {product.volumes.map((v) => (
+                        <span key={v} className="rounded-full border border-slate-200 bg-slate-50 px-3 py-1 text-xs font-semibold text-slate-800">{v}</span>
+                      ))}
+                    </div>
+                    {product.particleSize && (
+                      <div className="mt-4">
+                        <h3 className="mb-2 text-sm font-semibold text-slate-900">Particle Size</h3>
+                        <div className="flex flex-wrap gap-1.5">
+                          {(Array.isArray(product.particleSize) ? product.particleSize : [product.particleSize]).map((ps) => (
+                            <span key={ps} className="rounded-full border border-slate-200 bg-slate-50 px-3 py-1 text-xs font-medium text-slate-700">{ps}</span>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                )}
+                {(product.dimensions && product.dimensions.length > 0) && (
                   <div className="mt-6">
                     <h3 className="mb-2 text-sm font-semibold text-slate-900">{t.availableSizes}</h3>
                     <div className="flex flex-wrap gap-1.5">
-                      {product.sizes.map((s) => (
-                        <span key={s} className="rounded-full border border-slate-200 px-3 py-1 text-xs font-medium text-slate-700">{s}</span>
+                      {product.dimensions.map((d) => (
+                        <span key={d} className="rounded-full border border-slate-200 bg-slate-50 px-3 py-1 text-xs font-semibold text-slate-800">{d}</span>
                       ))}
                     </div>
                   </div>
@@ -375,16 +407,14 @@ export default async function ProductDetailPage({
               </h2>
               <p className="mt-2 text-sm text-slate-400">{t.wholesalePricing}</p>
             </div>
-            <a
-              href={waDetailUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={cn(buttonVariants({ size: "lg" }), "h-12 shrink-0 rounded-full bg-white px-7 text-[15px] text-slate-900 hover:bg-slate-100")}
-            >
-              <MessageCircle className="mr-2 h-4 w-4" />
-              {t.requestQuoteWhatsApp}
-              <ArrowRight className="ml-2 h-4 w-4" />
-            </a>
+            <ProductQuoteButton
+              productName={product.name}
+              categoryLabel={categoryLabel}
+              sizeOptions={sizeOptions}
+              waNumber={waNumber}
+              label={t.requestQuoteWhatsApp}
+              className="h-12 shrink-0 rounded-full bg-white px-7 text-[15px] text-slate-900 hover:bg-slate-100"
+            />
           </div>
         </div>
       </section>

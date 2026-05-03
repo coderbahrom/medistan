@@ -75,9 +75,9 @@ const filterGroups: FilterGroup[] = [
     id: "size",
     label: "Size",
     options: [
-      { value: "15×20", label: "15×20 mm" },
-      { value: "15×30", label: "15×30 mm" },
-      { value: "20×30", label: "20×30 mm" },
+      { value: "15 × 20", label: "15 × 20 mm" },
+      { value: "20 × 30", label: "20 × 30 mm" },
+      { value: "30 × 40", label: "30 × 40 mm" },
     ],
   },
 ];

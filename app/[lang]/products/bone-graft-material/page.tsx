@@ -39,7 +39,7 @@ const filterGroups: FilterGroup[] = [
     id: "type",
     label: "Type",
     options: [
-      { value: "allograft", label: "Allograft (3)" },
+      { value: "allograft", label: "Allograft (4)" },
       { value: "xenograft", label: "Xenograft (1)" },
     ],
   },
@@ -83,6 +83,38 @@ const filterGroups: FilterGroup[] = [
       { value: "80%", label: "80/20 Cortical-Cancellous" },
       { value: "70%", label: "70/30 Cortical-Cancellous" },
       { value: "bovine cancellous", label: "Bovine Cancellous" },
+    ],
+  },
+  {
+    id: "volume",
+    label: "Volume (cc)",
+    options: [
+      { value: "0.25cc", label: "0.25 cc" },
+      { value: "0.3cc", label: "0.3 cc" },
+      { value: "0.35cc", label: "0.35 cc" },
+      { value: "0.5cc", label: "0.5 cc" },
+      { value: "0.6cc", label: "0.6 cc" },
+      { value: "1.0cc", label: "1.0 cc" },
+      { value: "1.1cc", label: "1.1 cc" },
+    ],
+  },
+  {
+    id: "weight",
+    label: "Weight (g)",
+    options: [
+      { value: "0.25g", label: "0.25 g" },
+      { value: "0.5g", label: "0.5 g" },
+      { value: "1.0g", label: "1.0 g" },
+      { value: "2.0g", label: "2.0 g" },
+    ],
+  },
+  {
+    id: "particleRange",
+    label: "Particle Size Range",
+    options: [
+      { value: "<0.5mm", label: "< 0.5 mm" },
+      { value: "0.5-1.0mm", label: "0.5 – 1.0 mm" },
+      { value: "1.0-2.0mm", label: "1.0 – 2.0 mm" },
     ],
   },
 ];

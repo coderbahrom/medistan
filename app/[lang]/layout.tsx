@@ -48,7 +48,7 @@ export async function generateMetadata({
       template: "%s | Medistan",
     },
     description:
-      "Korean-manufactured dental bone graft materials and barrier membranes for oral surgeons, periodontists, and implantologists. K-FDA and CE cleared. Factory-direct wholesale shipping to 62 countries.",
+      "Korean-manufactured dental bone graft materials and barrier membranes for oral surgeons, periodontists, and implantologists. K-FDA and CE cleared. Factory-direct wholesale shipping worldwide.",
     keywords: [
       "bone allograft",
       "bovine xenograft",
@@ -72,7 +72,7 @@ export async function generateMetadata({
       title:
         "Medistan — Korean Dental Bone Grafts & Membranes | Wholesale Worldwide",
       description:
-        "K-FDA and CE cleared bone graft materials and barrier membranes. Factory-direct wholesale to oral surgeons and periodontists in 62 countries.",
+        "K-FDA and CE cleared bone graft materials and barrier membranes. Factory-direct wholesale to oral surgeons and periodontists worldwide.",
       images: [
         {
           url: "/og/home.svg",

@@ -27,7 +27,7 @@ export async function generateMetadata({
     openGraph: {
       title: "Products — Bone Grafts & Membranes | Medistan",
       description:
-        "4 bone graft materials + 2 barrier membranes. K-FDA and CE cleared. Factory-direct wholesale to 62 countries.",
+        "5 bone graft materials + 2 barrier membranes. K-FDA and CE cleared. Factory-direct wholesale worldwide.",
       images: [{ url: "/og/products.svg", width: 1200, height: 630 }],
     },
   };

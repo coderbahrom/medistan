@@ -40,6 +40,7 @@ type NavT = {
 const boneGrafts = [
   { name: "Renew Oss™", slug: "renew-oss", spec: "Allograft particulate · 3–4 mo" },
   { name: "Do Bone™", slug: "do-bone", spec: "Allograft syringe · 4–6 mo" },
+  { name: "Bone Us Allo", slug: "bone-us-allo", spec: "Allograft particulate · Balanced 70/30" },
   { name: "Titan Bone™", slug: "titan-bone", spec: "High-density cortical · 5–6 mo" },
   { name: "Titan-X® / Titan-B™", slug: "titan-x", spec: "Bovine xenograft · Permanent scaffold" },
 ];

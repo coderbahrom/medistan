@@ -1,5 +1,5 @@
 // ---------------------------------------------------------------------------
-// Product catalog — single source of truth for all 6 Medistan SKUs
+// Product catalog — single source of truth for all 7 Medistan SKUs
 // ---------------------------------------------------------------------------
 
 export interface BaseSpecs {
@@ -40,6 +40,16 @@ export interface Product {
   description: string;
   specs: ProductSpecs;
   primaryUse: string[];
+  /** Available volumes/weights for bone grafts (cc or g — see unit in value string) */
+  volumes?: string[];
+  /**
+   * Particle size range(s). String for single option; string[] for products
+   * with multiple selectable particle size variants (e.g. Titan-X/B).
+   */
+  particleSize?: string | string[];
+  /** Available dimensions for membrane products */
+  dimensions?: string[];
+  /** @deprecated Use volumes or dimensions instead */
   sizes?: string[];
   packaging?: string[];
   image: string;
@@ -72,6 +82,8 @@ export const products: Product[] = [
       format: 'Particulate (0.25 mm – 1.0 mm)',
       storage: 'Room Temperature',
     },
+    volumes: ['0.3cc', '0.6cc', '1.0cc'],
+    particleSize: '0.2 – 1.0 mm',
     primaryUse: ['Socket preservation', 'Sinus augmentation', 'Ridge augmentation'],
     image: '/products/renew-oss.svg',
     relatedProducts: ['diaderm-m', 'titan-gide'],
@@ -95,13 +107,38 @@ export const products: Product[] = [
       handling: 'Instant rehydration, precise placement',
       storage: 'Room Temperature',
     },
+    volumes: ['0.25cc', '0.5cc', '1.0cc'],
+    particleSize: '0.4 – 0.7 mm',
     primaryUse: [
       'Extraction sockets',
       'Implant dehiscence',
       'Minimally invasive GBR',
     ],
-    packaging: ['Pre-filled Syringe', '0.25 cc', '0.5 cc', '1.0 cc', '2.0 cc'],
     image: '/products/do-bone.svg',
+    relatedProducts: ['diaderm-m', 'titan-gide'],
+  },
+
+  {
+    id: 'bone-us-allo',
+    slug: 'bone-us-allo',
+    name: 'Bone Us Allo',
+    category: 'bone-graft',
+    subcategory: 'Allograft · Particulate',
+    composition: '70% Cortical / 30% Cancellous',
+    tagline: 'Balanced cortical-cancellous allograft particulate for versatile clinical applications.',
+    description:
+      'Bone Us Allo is a mineralized human allograft particulate offering a balanced 70/30 cortical-to-cancellous ratio designed for versatile general bone augmentation. The balanced blend of structural cortical bone and revascularizing cancellous bone delivers medium remodeling speed — faster than pure cortical grafts yet more volume-stable than high-cancellous formulations. This makes it an adaptable choice for socket preservation, ridge augmentation, and general bone defect filling where predictable, moderately-paced remodeling is the goal.',
+    specs: {
+      specType: 'bone-graft',
+      material: 'Mineralized Human Allograft',
+      sterilization: 'Gamma Irradiation',
+      format: 'Particulate',
+      storage: 'Room Temperature',
+    },
+    volumes: ['0.35cc', '0.6cc', '1.1cc'],
+    // TODO: confirm particle size with manufacturer before displaying publicly
+    primaryUse: ['Socket preservation', 'Ridge augmentation', 'General bone augmentation'],
+    image: '/products/bone-us-allo.svg',
     relatedProducts: ['diaderm-m', 'titan-gide'],
   },
 
@@ -123,6 +160,8 @@ export const products: Product[] = [
       density: 'High (Resists compression)',
       storage: 'Room Temperature',
     },
+    volumes: ['0.3cc', '0.6cc', '1.1cc'],
+    particleSize: '0.2 – 0.89 mm',
     primaryUse: ['Horizontal ridge augmentation', 'Large bony defects'],
     image: '/products/titan-bone.svg',
     relatedProducts: ['diaderm-m', 'titan-gide'],
@@ -147,6 +186,12 @@ export const products: Product[] = [
       hydrophilicity: 'Excellent (Wicks blood instantly)',
       storage: 'Room Temperature',
     },
+    // Xenograft measured in grams (weight), not cc (volume), because anorganic
+    // bovine mineral is dispensed by mass rather than volume.
+    volumes: ['0.25g', '0.5g', '1.0g', '2.0g'],
+    // Titan-B offers 2 particle size options; Titan-X offers 3.
+    // All available variants are listed here for filter/display purposes.
+    particleSize: ['0.2 – 1.0 mm', '0.5 – 1.2 mm', '1.0 – 2.0 mm', '1.2 – 1.7 mm'],
     primaryUse: [
       'Aesthetic zone augmentation',
       'Sinus lifts',
@@ -176,8 +221,9 @@ export const products: Product[] = [
       handling: 'Flexible, high draping effect',
       storage: 'Room Temperature',
     },
+    // Only 15 × 20 mm is currently available.
+    dimensions: ['15 × 20 mm'],
     primaryUse: ['Guided Bone Regeneration (GBR)', 'Guided Tissue Regeneration (GTR)'],
-    sizes: ['15×20 mm', '15×30 mm', '20×30 mm'],
     image: '/products/diaderm-m.svg',
     relatedProducts: ['renew-oss', 'do-bone'],
   },
@@ -202,6 +248,7 @@ export const products: Product[] = [
       memory: 'Zero-memory when hydrated',
       storage: 'Room Temperature',
     },
+    dimensions: ['15 × 20 mm', '20 × 30 mm', '30 × 40 mm'],
     primaryUse: [
       'Large ridge augmentations',
       'Complex GBR',

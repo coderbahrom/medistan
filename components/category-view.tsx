@@ -122,12 +122,47 @@ function matchProduct(
         }
         break;
       case "size":
-        hit = !product.sizes?.length
+        hit = !product.dimensions?.length
           ? false
           : selected.some((v) =>
-              product.sizes!.some((s) => s.includes(v))
+              product.dimensions!.some((d) => d.includes(v))
             );
         break;
+      case "volume":
+        hit = !product.volumes?.length
+          ? false
+          : selected.some((v) => product.volumes!.includes(v));
+        break;
+      case "weight":
+        hit = !product.volumes?.length
+          ? false
+          : selected.some((v) => product.volumes!.includes(v));
+        break;
+      case "particleRange": {
+        const ps = product.particleSize;
+        if (!ps) { hit = false; break; }
+        const sizes = Array.isArray(ps) ? ps : [ps];
+        hit = selected.some((range) => {
+          if (range === "<0.5mm")
+            return sizes.some((s) => {
+              const lo = parseFloat(s.split("–")[0].trim());
+              return lo < 0.5;
+            });
+          if (range === "0.5-1.0mm")
+            return sizes.some((s) => {
+              const lo = parseFloat(s.split("–")[0].trim());
+              const hi = parseFloat(s.split("–")[1]?.trim() ?? "0");
+              return (lo >= 0.5 && lo <= 1.0) || (hi >= 0.5 && hi <= 1.0);
+            });
+          if (range === "1.0-2.0mm")
+            return sizes.some((s) => {
+              const hi = parseFloat(s.split("–")[1]?.trim() ?? "0");
+              return hi >= 1.0;
+            });
+          return false;
+        });
+        break;
+      }
       default:
         hit = true;
     }
@@ -135,6 +170,16 @@ function matchProduct(
     if (!hit) return false;
   }
   return true;
+}
+
+// ---------------------------------------------------------------------------
+// Size summary helper — compact one-liner for category cards
+// ---------------------------------------------------------------------------
+
+function getSizeSummary(p: Product): string | null {
+  if (p.dimensions?.length) return p.dimensions.join(" / ");
+  if (p.volumes?.length) return `Available in ${p.volumes.join(" / ")}`;
+  return null;
 }
 
 // ---------------------------------------------------------------------------
@@ -376,9 +421,14 @@ export function CategoryView({
                       </h3>
                       <p className="mt-0.5 text-xs text-slate-500">{getSpecLine(p)}</p>
                     </div>
-                    <p className="mb-4 flex-1 text-sm leading-relaxed text-slate-600 line-clamp-3">
+                    <p className="mb-2 flex-1 text-sm leading-relaxed text-slate-600 line-clamp-3">
                       {p.tagline}
                     </p>
+                    {getSizeSummary(p) && (
+                      <p className="mb-3 text-[11px] font-medium text-slate-500">
+                        {getSizeSummary(p)}
+                      </p>
+                    )}
                     <div className="flex items-center gap-2">
                       <Link
                         href={`/${lang}/products/${p.slug}`}

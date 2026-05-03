@@ -61,7 +61,7 @@ const orgJsonLd = {
     addressLocality: "Seoul",
     addressCountry: "KR",
   },
-  foundingDate: "2016",
+  foundingDate: "2024",
   numberOfEmployees: { "@type": "QuantitativeValue", value: "200" },
   sameAs: ["https://medistan.co.kr"],
 };
@@ -258,10 +258,10 @@ function RegenerativeVisual({ t }: { t: Dictionary["common"] }) {
 
 function StatsStrip({ t }: { t: Dictionary }) {
   const stats = [
-    { value: "5,000+", label: t.stats.clinicsServed },
-    { value: "62", label: t.stats.countriesShipped },
-    { value: "10 yrs", label: t.stats.manufacturing },
-    { value: "6", label: t.stats.activeSKUs },
+    { value: "2024", label: t.stats.founded },
+    { value: "Global", label: t.stats.internationalShipping },
+    { value: "K-FDA · CE", label: t.stats.certifications },
+    { value: "7", label: t.stats.activeSKUs },
   ];
   return (
     <section className="border-b border-slate-200/80 bg-slate-950 text-white">
@@ -484,10 +484,10 @@ function Testimonials({ t }: { t: Dictionary }) {
 
 function About({ lang, t }: { lang: string; t: Dictionary }) {
   const aboutStats = [
-    { label: t.aboutStats.founded, value: "2016" },
+    { label: t.aboutStats.founded, value: "2024" },
     { label: t.aboutStats.isoStandard, value: "13485:2016" },
     { label: t.aboutStats.clearances, value: "K-FDA · CE" },
-    { label: t.aboutStats.exportMarkets, value: "62 countries" },
+    { label: t.aboutStats.exportMarkets, value: "Worldwide" },
   ];
   return (
     <section
