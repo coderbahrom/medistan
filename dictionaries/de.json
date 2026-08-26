@@ -164,5 +164,321 @@
     "wholesalePricing": "Großhandelspreise innerhalb von 24 Stunden. Kostenlose Muster für qualifizierte Kliniken.",
     "requestQuoteWhatsApp": "Angebot per WhatsApp anfordern",
     "professionalUse": "Nur für den professionellen Gebrauch. Dieses Produkt ist für den Einsatz durch ausgebildete Zahnärzte bestimmt. Befolgen Sie die chirurgischen Protokolle Ihrer Einrichtung und das Dokument Gebrauchsanweisung (IFU), das jedem Paket beiliegt."
+  },
+  "seo": {
+    "homeTitle": "Medistan — Koreanische Knochenersatzmaterialien & Membranen | Großhandel für Kliniken weltweit",
+    "homeDescription": "In Korea hergestellte dentale Knochenersatzmaterialien und Barrieremembranen für Oralchirurgen, Parodontologen und Implantologen. K-FDA- und CE-zertifiziert. Großhandel direkt ab Werk, weltweiter Versand.",
+    "productsTitle": "Produkte — Knochenersatzmaterialien & Membranen",
+    "productsDescription": "Das komplette Sortiment koreanischer dentaler Regenerationsmaterialien: Allografts, Xenografts, Kollagen- und Perikardmembranen. K-FDA- und CE-zertifiziert. Direkt ab Werk.",
+    "boneGraftTitle": "Dentale Knochenersatzmaterialien — Allografts & Xenografts",
+    "boneGraftDescription": "Koreanische Knochenersatzmaterialien: mineralisierte humane Allografts (Granulat, Spritze, hohe Dichte) und anorganisches bovines Xenograft. K-FDA- und CE-zertifiziert. Großhandel weltweit.",
+    "membraneTitle": "Dentale Barrieremembranen — Kollagen & Perikard",
+    "membraneDescription": "Resorbierbare Barrieremembranen für GBR und GTR: Typ-I-Schweinekollagen (3–4 Monate) und bovines Perikard (4–6 Monate). K-FDA- und CE-zertifiziert. Direkt ab Werk.",
+    "productSuffix": "K-FDA- und CE-zertifiziert. Großhandel direkt ab Werk an Oralchirurgen weltweit."
+  },
+  "catalog": {
+    "renew-oss": {
+      "subcategory": "Allograft · Granulat",
+      "composition": "80 % kortikal / 20 % spongiös",
+      "tagline": "Ein hochwertiges Allograft-Granulat für vorhersagbare Knochenregeneration. Verbindet strukturelle Stabilität mit schnellem Remodeling.",
+      "description": "Renew Oss™ ist ein hochwertiges mineralisiertes humanes Allograft-Granulat für vorhersagbare gesteuerte Knochenregeneration. Das Verhältnis von 80 % kortikalem zu 20 % spongiösem Knochen bietet optimale strukturelle Unterstützung in der kritischen frühen Heilungsphase, während der spongiöse Anteil Revaskularisierung und Zelleinwanderung beschleunigt. Die Partikelgröße von 0,25–1,0 mm sorgt für ausgezeichnete Handhabung und passt sich unregelmäßigen Defektgeometrien an. Die Gammasterilisation gewährleistet Sterilität, ohne die osteoinduktive Proteinmatrix zu beeinträchtigen.",
+      "specs": {
+        "material": "Mineralisiertes humanes Allograft",
+        "remodelingTime": "3–4 Monate",
+        "sterilization": "Gammabestrahlung",
+        "format": "Granulat (0,25 mm – 1,0 mm)",
+        "storage": "Raumtemperatur"
+      }
+    },
+    "do-bone": {
+      "subcategory": "Allograft · Spritze",
+      "composition": "70 % kortikal / 30 % spongiös",
+      "tagline": "Leistungsstarkes Allograft in einer ergonomischen Applikationsspritze. Das „Goldene Verhältnis“ verbessert die Revaskularisierung bei stabilem Volumen.",
+      "description": "Do Bone™ verbindet die Regenerationskraft eines Allografts im Verhältnis 70/30 mit der Präzision einer vorgefüllten Applikationsspritze. Die Rezeptur des „Goldenen Verhältnisses“ ist gezielt darauf abgestimmt, die Revaskularisierung zu beschleunigen und zugleich genügend kortikale Struktur für die Volumenstabilität zu erhalten. Das ergonomische Spritzenformat erlaubt es, das Material exakt an der gewünschten Stelle zu applizieren, was Handhabung und Kontaminationsrisiko minimiert. Die sofortige Rehydrierung macht die Vorbereitung am Stuhl mühelos.",
+      "specs": {
+        "material": "Mineralisiertes humanes Allograft",
+        "remodelingTime": "4–6 Monate",
+        "handling": "Sofortige Rehydrierung, präzise Applikation",
+        "storage": "Raumtemperatur"
+      }
+    },
+    "bone-us-allo": {
+      "subcategory": "Allograft · Granulat",
+      "composition": "70 % kortikal / 30 % spongiös",
+      "tagline": "Ausgewogenes kortikal-spongiöses Allograft-Granulat für vielseitige klinische Anwendungen.",
+      "description": "Bone Us Allo ist ein mineralisiertes humanes Allograft-Granulat mit einem ausgewogenen kortikal-spongiösen Verhältnis von 70/30 für die vielseitige Knochenaugmentation. Die Mischung aus strukturgebendem kortikalem und revaskularisierendem spongiösem Knochen ergibt eine mittlere Remodeling-Geschwindigkeit — schneller als rein kortikale Materialien und zugleich volumenstabiler als stark spongiöse Rezepturen. Damit ist es eine anpassungsfähige Wahl für Alveolenerhalt, Kieferkammaugmentation und die allgemeine Auffüllung von Knochendefekten, wenn ein vorhersagbares, moderat verlaufendes Remodeling gewünscht ist.",
+      "specs": {
+        "material": "Mineralisiertes humanes Allograft",
+        "sterilization": "Gammabestrahlung",
+        "format": "Granulat",
+        "storage": "Raumtemperatur"
+      }
+    },
+    "titan-bone": {
+      "subcategory": "Allograft · Hohe Dichte",
+      "composition": "100 % kortikal",
+      "tagline": "Maximale strukturelle Stabilität. Für Fälle, in denen Volumenerhalt und langsames, gleichmäßiges Remodeling im Vordergrund stehen.",
+      "description": "Titan Bone™ ist für die anspruchsvollsten Fälle struktureller Knochenregeneration ausgelegt. Mit 100 % mineralisiertem kortikalem Knochen bietet es die höchste Dichte und Kompressionsfestigkeit im Medistan-Allograft-Sortiment. Das macht es zum Material der Wahl, wenn der Erhalt des Volumens entscheidend ist — insbesondere bei der horizontalen Kieferkammaugmentation, wo einsinkende Membranen oder Weichgewebsdruck die Heilung gefährden können. Die längere Remodeling-Zeit von 5–6 Monaten erlaubt eine vollständige knöcherne Integration vor der prothetischen Belastung.",
+      "specs": {
+        "material": "100 % mineralisierter kortikaler Knochen",
+        "remodelingTime": "5–6 Monate",
+        "density": "Hoch (kompressionsbeständig)",
+        "storage": "Raumtemperatur"
+      }
+    },
+    "titan-x": {
+      "subcategory": "Xenograft · Bovin",
+      "composition": "Bovin spongiös",
+      "tagline": "Anorganische bovine Knochenmineralmatrix. Ein dauerhaftes, osteokonduktives Gerüst für maximale Volumenstabilität und Ästhetik.",
+      "description": "Titan-X®/Titan-B™ ist eine anorganische bovine Knochenmineralmatrix, bei der alle organischen Bestandteile entfernt und die native kristalline Hydroxylapatitstruktur erhalten wird. Das stark vernetzte Porensystem mit 70–80 % Porosität begünstigt eine rasche Blutkoagelbildung, Zelladhäsion und Neovaskularisation. Die nahezu dauerhaften Gerüsteigenschaften machen es besonders geeignet für die ästhetische Zone, in der langfristiger Volumenerhalt entscheidend ist. Die hydrophile Oberfläche nimmt Blut sofort auf und sorgt für optimale Handhabung im OP-Feld.",
+      "specs": {
+        "material": "Anorganisches bovines Mineral",
+        "porosity": "70 %–80 % vernetzt",
+        "resorption": "Sehr langsam (dauerhaftes Gerüst)",
+        "hydrophilicity": "Ausgezeichnet (nimmt Blut sofort auf)",
+        "storage": "Raumtemperatur"
+      }
+    },
+    "diaderm-m": {
+      "subcategory": "Kollagenmembran",
+      "composition": "Atelokollagen",
+      "tagline": "Biologisch abbaubare Barrieremembran. Hoch biokompatibel und gering immunogen — für den routinemäßigen Schutz des Augmentationsgebiets.",
+      "description": "Diaderm® M ist eine Membran aus porcinem Typ-I-Atelokollagen, hergestellt in einem eigenen Reinigungsverfahren, das immunogene Epitope minimiert. Das Ergebnis ist eine hoch biokompatible Barrieremembran mit vorhersagbarer Resorption in 3–4 Monaten, die zum Zeitverlauf der Knochenregeneration passt. Ihre flexible, anpassungsfähige Struktur folgt komplexen dreidimensionalen Defektgeometrien, und der ausgeprägte Drapiereffekt sorgt für engen Kontakt zum Nachbargewebe — Voraussetzung für den geschützten Raum, in dem die Knochenregeneration ungestört ablaufen kann.",
+      "specs": {
+        "material": "Porcines Typ-I-Atelokollagen",
+        "resorptionTime": "3–4 Monate",
+        "handling": "Flexibel, ausgeprägter Drapiereffekt",
+        "storage": "Raumtemperatur"
+      }
+    },
+    "titan-gide": {
+      "subcategory": "Perikardmembran",
+      "composition": "Bovines Perikard",
+      "tagline": "Hochwertige Langzeitbarriere. Die natürlich dichte, multidirektionale Faserstruktur bietet außergewöhnliche Reißfestigkeit und längeren Schutz.",
+      "description": "Titan Gide® nutzt die natürliche multidirektionale Faserarchitektur des bovinen Perikards und erreicht so außergewöhnliche mechanische Festigkeit in einer resorbierbaren Membran. Das dichte Kollagennetz widersteht dem Einreißen beim Nähen und Pinnen und ist damit erste Wahl für große Augmentationen und komplexe GBR-Eingriffe, bei denen Membranstabilität entscheidend ist. Die verlängerte Barrierefunktion von 4–6 Monaten — deutlich länger als bei Standard-Kollagenmembranen — schützt während der gesamten kritischen Heilungsphase. Hydratisiert wird die Membran weich, memoryfrei und legt sich natürlich über das augmentierte Areal.",
+      "specs": {
+        "material": "Bovines Perikard",
+        "resorptionTime": "4–6 Monate (verlängerte Barriere)",
+        "handling": "Memoryfrei nach Hydratation",
+        "tearResistance": "Hoch (zum Nähen/Pinnen geeignet)",
+        "memory": "Memoryfrei nach Hydratation",
+        "storage": "Raumtemperatur"
+      }
+    }
+  },
+  "indications": {
+    "socket-preservation": {
+      "label": "Alveolenerhalt",
+      "detail": "Die Augmentation der Alveole unmittelbar nach der Extraktion ist eine der häufigsten Indikationen. Das Einbringen von Knochenersatzmaterial in die frische Alveole erhält die Dimensionen des Alveolarkamms, verringert die Resorption und bereitet das Areal auf eine vorhersagbare Implantation nach 3–6 Monaten vor."
+    },
+    "sinus-augmentation": {
+      "label": "Sinusaugmentation",
+      "detail": "Sinusaugmentationen über das laterale Fenster oder transkrestal erfordern ein Material mit guter Handhabung, raumhaltenden Eigenschaften und zuverlässiger Integration."
+    },
+    "ridge-augmentation": {
+      "label": "Kieferkammaugmentation",
+      "detail": "Horizontale und vertikale Kieferkammaugmentationen verlangen ein Material, das dem Weichgewebsdruck standhält, den Raum unter der Membran erhält und ausreichend Volumen für die Implantatabstützung liefert."
+    },
+    "general-bone-augmentation": {
+      "label": "Allgemeine Knochenaugmentation",
+      "detail": "Das routinemäßige Auffüllen von Knochendefekten verlangt ein vielseitiges Material mit moderatem Remodeling, das sich unterschiedlichen Defektgeometrien anpasst und vorhersagbar integriert — ohne die Extreme sehr schneller oder sehr langsamer Umbauprozesse."
+    },
+    "extraction-sockets": {
+      "label": "Extraktionsalveolen",
+      "detail": "Über die Spritze appliziertes Material lässt sich mit minimaler Manipulation präzise in die frische Alveole einbringen, was das Kontaminationsrisiko senkt und die Anlagerung an die Alveolenwände optimiert."
+    },
+    "implant-dehiscence": {
+      "label": "Implantatdehiszenz",
+      "detail": "Bukkale Dehiszenzdefekte an Implantaten werden üblicherweise mit granuliertem oder über Spritze appliziertem Material in Kombination mit einer resorbierbaren Membran versorgt."
+    },
+    "minimally-invasive-gbr": {
+      "label": "Minimalinvasive GBR",
+      "detail": "Das vorgefüllte Spritzenformat ermöglicht minimalinvasive GBR über kleinere Lappendesigns — geringere Belastung für die Patientinnen und Patienten bei präziser Applikation im Defekt."
+    },
+    "horizontal-ridge-augmentation": {
+      "label": "Horizontale Kieferkammaugmentation",
+      "detail": "Bei ausgeprägter horizontaler Kammresorption braucht es ein dichtes, kompressionsbeständiges Material, das die Kammbreite gegen die Lappenspannung hält."
+    },
+    "large-bony-defects": {
+      "label": "Große Knochendefekte",
+      "detail": "Ausgedehnter Knochenverlust erfordert ein strukturell belastbares Material, das große Volumina füllt und den Raum über die gesamte Heilungsphase hält."
+    },
+    "aesthetic-zone-augmentation": {
+      "label": "Augmentation in der ästhetischen Zone",
+      "detail": "Die Oberkieferfront verlangt außergewöhnliche Volumenstabilität. Ein dauerhaftes Gerüstmaterial erhält die Kammkontur langfristig und stützt Hart- und Weichgewebsästhetik."
+    },
+    "sinus-lifts": {
+      "label": "Sinuslift",
+      "detail": "Beim Sinuslift muss das Material gut mit dem natürlichen Sinusboden verbinden und ausreichend Höhe und Dichte für eine sichere Implantation bieten."
+    },
+    "long-term-volume-maintenance": {
+      "label": "Langfristiger Volumenerhalt",
+      "detail": "Wenn das Knochenvolumen über Jahre erhalten bleiben muss, bewahrt ein langsam resorbierendes oder dauerhaftes Gerüst das regenerierte Volumen über die prothetische Belastungsphase hinweg."
+    },
+    "gbr": {
+      "label": "Gesteuerte Knochenregeneration (GBR)",
+      "detail": "GBR ist die Hauptindikation für Barrieremembranen. Indem sie schnell proliferierendes Epithel und Bindegewebe ausschließt, schafft die Membran einen geschützten Raum für osteogene Zellen."
+    },
+    "gtr": {
+      "label": "Gesteuerte Geweberegeneration (GTR)",
+      "detail": "Bei der GTR parodontaler Defekte verhindert die Membran das Einwachsen von Epithel und Bindegewebe, sodass Zellen des Parodontalligaments den Attachmentapparat regenerieren können."
+    },
+    "large-ridge-augmentation": {
+      "label": "Große Kieferkammaugmentationen",
+      "detail": "Große Augmentationen stellen hohe mechanische Anforderungen an die Membran. Eine reißfeste Perikardmembran lässt sich ohne Perforationsrisiko nähen und pinnen."
+    },
+    "complex-gbr": {
+      "label": "Komplexe GBR",
+      "detail": "Bei großen oder nicht selbsttragenden Knochendefekten ist eine Membran mit hoher mechanischer Integrität und verlängerter Barrierefunktion von Vorteil."
+    },
+    "sinus-floor-protection": {
+      "label": "Schutz des Sinusbodens",
+      "detail": "Bei der Sinusbodenaugmentation bildet eine an die Schneider-Membran gelegte Membran eine Schutzschicht für das Augmentat."
+    }
+  },
+  "specLabels": {
+    "category": "Kategorie",
+    "subcategory": "Unterkategorie",
+    "composition": "Zusammensetzung",
+    "material": "Material",
+    "remodelingTime": "Remodeling-Zeit",
+    "sterilization": "Sterilisation",
+    "format": "Form / Partikelgröße",
+    "density": "Dichte",
+    "porosity": "Porosität",
+    "resorption": "Resorption",
+    "hydrophilicity": "Hydrophilie",
+    "handling": "Handhabung",
+    "resorptionTime": "Resorptionszeit",
+    "tearResistance": "Reißfestigkeit",
+    "memory": "Memory-Effekt",
+    "storage": "Lagerung",
+    "volumes": "Verfügbare Volumina",
+    "weights": "Verfügbare Gewichte",
+    "particleSize": "Partikelgröße",
+    "dimensions": "Verfügbare Größen",
+    "packaging": "Verpackung",
+    "regulatory": "Regulatorischer Status",
+    "regulatoryValue": "K-FDA · CE-zertifiziert"
+  },
+  "handling": {
+    "xenograft": "Hydrophilie: {hydrophilicity}. Vor dem Einbringen mit Blut oder Kochsalzlösung befeuchten. Bis zur Anwendung bei Raumtemperatur und vor Feuchtigkeit geschützt lagern.",
+    "boneGraft": "Bei Raumtemperatur lagern. Unter üblichen sterilen Bedingungen handhaben.",
+    "sterilizedBy": "Sterilisiert durch: {sterilization}.",
+    "membraneMemory": "Die Membran ist {memory} und liegt dadurch eng am Gewebe an.",
+    "membraneBase": "Vor dem Einbringen 30–60 Sekunden in steriler Kochsalzlösung rehydrieren.",
+    "membraneTear": "Reißfestigkeit: {tearResistance} — sicheres Nähen und Pinnen möglich.",
+    "membraneStorage": "Bei Raumtemperatur in der Originalverpackung lagern. Nicht resterilisieren."
+  },
+  "filters": {
+    "filters": "Filter",
+    "clearAll": "Alle zurücksetzen",
+    "clearFilters": "Filter zurücksetzen",
+    "noMatch": "Keine Produkte entsprechen den gewählten Filtern.",
+    "productCount": "{count} Produkte",
+    "showResults": "{count} Ergebnisse anzeigen",
+    "viewDetails": "Details ansehen",
+    "quoteAria": "Angebot für {product} über WhatsApp anfragen",
+    "completeSetup": "Ergänzen Sie Ihr Set",
+    "faqTitle": "Häufige Fragen",
+    "ctaTitle": "Bereit für ein Preisangebot?",
+    "ctaSubtitle": "Großhandelsangebot innerhalb von 24 Stunden.",
+    "ctaButton": "Angebot über WhatsApp anfragen",
+    "specLineRemodeling": "{time} Remodeling",
+    "specLineResorption": "{time} Resorption",
+    "availableIn": "Verfügbar in {sizes}",
+    "groups": {
+      "type": "Typ",
+      "format": "Form",
+      "remodeling": "Remodeling-/Resorptionszeit",
+      "indication": "Indikation",
+      "composition": "Zusammensetzung",
+      "volume": "Volumen (cc)",
+      "weight": "Gewicht (g)",
+      "particleRange": "Partikelgrößenbereich",
+      "material": "Material",
+      "resorption": "Resorptionszeit",
+      "origin": "Herkunft",
+      "size": "Größe"
+    },
+    "options": {
+      "allograft": "Allograft",
+      "xenograft": "Xenograft",
+      "particulate": "Granulat",
+      "syringe": "Spritze",
+      "high-density": "Block hoher Dichte",
+      "granules": "Granula (Xenograft)",
+      "3-4": "3–4 Monate",
+      "4-6": "4–6 Monate",
+      "5-6": "5–6 Monate",
+      "permanent": "Sehr langsam (dauerhaft)",
+      "100-cortical": "100 % kortikal",
+      "80-20": "80/20 kortikal-spongiös",
+      "70-30": "70/30 kortikal-spongiös",
+      "bovine-cancellous": "Bovin spongiös",
+      "collagen": "Kollagen",
+      "pericardium": "Perikard",
+      "human": "Human",
+      "bovine": "Bovin",
+      "porcine": "Porcin",
+      "lt-05": "< 0,5 mm",
+      "05-10": "0,5 – 1,0 mm",
+      "10-20": "1,0 – 2,0 mm",
+      "ind-socket": "Alveolenerhalt",
+      "ind-sinus": "Sinuslift / -augmentation",
+      "ind-ridge": "Kieferkammaugmentation",
+      "ind-aesthetic": "Ästhetische Zone",
+      "ind-dehiscence": "Implantatdehiszenz",
+      "ind-large": "Große Defekte",
+      "ind-gbr": "Gesteuerte Knochenregeneration",
+      "ind-gtr": "Gesteuerte Geweberegeneration",
+      "ind-large-ridge": "Große Kieferkammaugmentation",
+      "ind-complex-gbr": "Komplexe GBR",
+      "ind-sinus-floor": "Schutz des Sinusbodens"
+    }
+  },
+  "categoryPages": {
+    "boneGraftIntro": "In Korea hergestellte Knochenersatzmaterialien für Oralchirurgen, Parodontologen und Implantologen. Vier humane Allografts — Granulat, Spritzenapplikation und hochdichter kortikaler Knochen — plus ein dauerhaftes bovines Xenograft-Gerüst. Alle K-FDA- und CE-zertifiziert.",
+    "membraneIntro": "In Korea hergestellte resorbierbare Barrieremembranen für GBR- und GTR-Eingriffe. Porcines Typ-I-Atelokollagen (Resorption 3–4 Monate) und bovines Perikard (Resorption 4–6 Monate) — beide K-FDA- und CE-zertifiziert für vorhersagbare gesteuerte Regeneration.",
+    "relatedBone": "Die meisten Behandler kombinieren ihr Knochenersatzmaterial mit einer Membran",
+    "relatedMembrane": "Kombinieren Sie Ihre Membran mit einem Knochenersatzmaterial"
+  },
+  "faq": {
+    "boneGraft": [
+      {
+        "q": "Was ist der Unterschied zwischen Allograft und Xenograft?",
+        "a": "Allografts stammen aus humanem (Spender-)Knochen und werden so aufbereitet, dass Mineral- und Proteinmatrix erhalten bleiben. Sie integrieren sich natürlich und werden zu neuem Knochen umgebaut. Xenografts stammen aus bovinem Knochenmineral — alle organischen Bestandteile werden entfernt, zurück bleibt das Hydroxylapatitgerüst. Xenografts resorbieren sehr langsam und sind daher ideal, wenn langfristige Volumenstabilität im Vordergrund steht."
+      },
+      {
+        "q": "Wie lange dauert die Integration eines Knochenersatzmaterials?",
+        "a": "Die Integrationszeit hängt vom Material und der Biologie der Patientin oder des Patienten ab. Allografts zeigen üblicherweise in 3–6 Monaten eine gute Integration: Renew Oss (3–4 Mon.), Do Bone (4–6 Mon.), Titan Bone (5–6 Mon.). Bovine Xenografts wie Titan-X bleiben als dauerhaftes Gerüst erhalten und werden über Jahre schrittweise inkorporiert."
+      },
+      {
+        "q": "Brauche ich immer eine Membran zum Knochenersatzmaterial?",
+        "a": "In den meisten GBR-Fällen wird eine Membran dringend empfohlen, um das Einwachsen von Weichgewebe in das Augmentat zu verhindern. Ausnahmen sind intraossäre Defekte mit drei oder vier Wänden. Bei Extraktionsalveolen und Kieferkammaugmentationen verbessert eine Membran die Vorhersagbarkeit deutlich."
+      },
+      {
+        "q": "Welches Knochenersatzmaterial eignet sich am besten für den Alveolenerhalt?",
+        "a": "Renew Oss™ (Allograft-Granulat) ist wegen der Partikelgröße von 0,25–1,0 mm und der Remodeling-Zeit von 3–4 Monaten die häufigste Wahl für den Alveolenerhalt. Do Bone™ in der Spritze eignet sich ebenfalls hervorragend für Alveolen, die eine präzise Applikation erfordern."
+      },
+      {
+        "q": "Welches Knochenersatzmaterial eignet sich am besten für den Sinuslift?",
+        "a": "Sowohl Renew Oss™ als auch Titan-X®/Titan-B™ werden häufig für Sinuslifts eingesetzt. Renew Oss remodelliert schneller (3–4 Monate). Titan-X bietet eine überlegene Volumenstabilität und wird bevorzugt, wenn langfristige volumetrische Vorhersagbarkeit gefragt ist."
+      }
+    ],
+    "membrane": [
+      {
+        "q": "Was unterscheidet Kollagen- von Perikardmembranen?",
+        "a": "Kollagenmembranen (wie Diaderm® M) bestehen aus porcinem Atelokollagen, sind sehr flexibel und resorbieren in 3–4 Monaten — passend zur üblichen GBR-Heilung. Perikardmembranen (wie Titan Gide®) bestehen aus bovinem Perikard: einer natürlich dichten, multidirektionalen Faserstruktur mit höherer Reißfestigkeit und längerer Barrierefunktion von 4–6 Monaten."
+      },
+      {
+        "q": "Wie wähle ich zwischen den resorbierbaren Membranen?",
+        "a": "Entscheiden Sie nach Defektgröße, erwarteter Heilungsdauer und chirurgischer Komplexität. Für routinemäßigen Alveolenerhalt oder kleine Defekte: Diaderm® M (Kollagen, 3–4 Mon.). Für große Kieferkammaugmentationen oder wenn genäht bzw. gepinnt wird: Titan Gide® (Perikard, 4–6 Mon.)."
+      },
+      {
+        "q": "Kann ich eine Membran ohne Knochenersatzmaterial verwenden?",
+        "a": "Ja — bei der GTR parodontaler Defekte wird die Membran allein eingesetzt, um Epithel und Bindegewebe auszuschließen. Bei den meisten GBR-Augmentationen verbessert die Kombination aus Membran und Knochenersatzmaterial das volumetrische Ergebnis jedoch deutlich."
+      }
+    ]
   }
 }

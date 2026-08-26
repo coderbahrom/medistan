@@ -80,19 +80,22 @@ export function Navbar({ lang, t }: { lang: string; t: NavT }) {
     return () => document.removeEventListener("keydown", handler);
   }, [closeDropdown, closeLang]);
 
-  useEffect(() => {
+  // Close every menu when the route changes. Adjusting state during render
+  // (guarded by the previous value) is the React-sanctioned alternative to
+  // calling setState inside an effect, which cascades renders.
+  const [lastPathname, setLastPathname] = useState(pathname);
+  if (pathname !== lastPathname) {
+    setLastPathname(pathname);
     setDropdownOpen(false);
     setMobileOpen(false);
     setLangOpen(false);
-  }, [pathname]);
+  }
 
   function switchLocale(newLang: string) {
     // Replace /[lang] segment at start of pathname
     const withoutLang = pathname.replace(/^\/[a-z]{2}(\/|$)/, "/");
     router.push(`/${newLang}${withoutLang === "/" ? "" : withoutLang}`);
   }
-
-  const currentLocaleLabel = LOCALES.find((l) => l.code === lang)?.label ?? lang.toUpperCase();
 
   return (
     <header className="sticky top-0 z-40 border-b border-slate-200/80 bg-white/80 backdrop-blur-md">

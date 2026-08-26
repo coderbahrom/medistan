@@ -2,8 +2,15 @@ import type { Metadata } from "next";
 import { Inter, Fraunces } from "next/font/google";
 import Script from "next/script";
 import "../globals.css";
-import { getDictionary, hasLocale, locales, type Locale } from "./dictionaries";
+import { getDictionary, hasLocale, locales } from "./dictionaries";
 import { notFound } from "next/navigation";
+import {
+  SITE_URL,
+  OG_LOCALE,
+  alternatesFor,
+  localeUrl,
+  ogAlternateLocales,
+} from "@/lib/seo";
 
 const GA_ID = "G-X6C3F0TZ91";
 
@@ -31,24 +38,17 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { lang } = await params;
   const locale = hasLocale(lang) ? lang : "en";
-
-  const ogLocaleMap: Record<Locale, string> = {
-    en: "en_US",
-    ar: "ar_SA",
-    fr: "fr_FR",
-    de: "de_DE",
-    ru: "ru_RU",
-  };
+  const dict = await getDictionary(locale);
+  const t = dict.seo;
 
   return {
-    metadataBase: new URL("https://medistan.co.kr"),
+    metadataBase: new URL(SITE_URL),
     title: {
-      default:
-        "Medistan — Korean Dental Bone Grafts & Membranes | Wholesale to Clinics Worldwide",
+      default: t.homeTitle,
       template: "%s | Medistan",
     },
-    description:
-      "Korean-manufactured dental bone graft materials and barrier membranes for oral surgeons, periodontists, and implantologists. K-FDA and CE cleared. Factory-direct wholesale shipping worldwide.",
+    description: t.homeDescription,
+    alternates: alternatesFor(locale),
     keywords: [
       "bone allograft",
       "bovine xenograft",
@@ -66,13 +66,12 @@ export async function generateMetadata({
     ],
     openGraph: {
       type: "website",
-      locale: ogLocaleMap[locale as Locale] ?? "en_US",
-      url: "https://medistan.co.kr",
+      locale: OG_LOCALE[locale],
+      alternateLocale: ogAlternateLocales(locale),
+      url: localeUrl(locale),
       siteName: "Medistan",
-      title:
-        "Medistan — Korean Dental Bone Grafts & Membranes | Wholesale Worldwide",
-      description:
-        "K-FDA and CE cleared bone graft materials and barrier membranes. Factory-direct wholesale to oral surgeons and periodontists worldwide.",
+      title: t.homeTitle,
+      description: t.homeDescription,
       images: [
         {
           url: "/og/home.svg",
@@ -84,9 +83,8 @@ export async function generateMetadata({
     },
     twitter: {
       card: "summary_large_image",
-      title: "Medistan — Korean Dental Bone Grafts & Membranes",
-      description:
-        "Factory-direct wholesale of allografts, xenografts, collagen and pericardium membranes. K-FDA and CE cleared.",
+      title: t.homeTitle,
+      description: t.homeDescription,
       images: ["/og/home.svg"],
     },
   };
@@ -102,7 +100,6 @@ export default async function LangLayout({
   const { lang } = await params;
   if (!hasLocale(lang)) notFound();
 
-  const dict = await getDictionary(lang);
   const dir = lang === "ar" ? "rtl" : "ltr";
 
   return (
@@ -112,8 +109,7 @@ export default async function LangLayout({
       className={`${sans.variable} ${serif.variable}`}
     >
       <body className="font-sans">
-        {/* Pass dict to children via a data attribute is not ideal —
-            instead each page receives lang via params and loads dict itself */}
+        {/* Each page receives `lang` via params and loads its own dictionary. */}
         {children}
       </body>
       <Script

@@ -1,5 +1,12 @@
 // ---------------------------------------------------------------------------
 // Product catalog — single source of truth for all 7 Medistan SKUs
+//
+// Two kinds of data live here:
+//   • Language-neutral structure — ids, facets, volumes, particle sizes, images.
+//     Filtering and matching ALWAYS run on these, never on prose.
+//   • English copy — subcategory/composition/tagline/description/spec values.
+//     This is the canonical source AND the fallback when a locale is missing a
+//     translation; localized copy comes from `dictionaries/*.json` → `catalog`.
 // ---------------------------------------------------------------------------
 
 export interface BaseSpecs {
@@ -29,17 +36,61 @@ export interface MembraneSpecs extends BaseSpecs {
 
 export type ProductSpecs = BoneGraftSpecs | MembraneSpecs;
 
+// ---------------------------------------------------------------------------
+// Facets — language-neutral keys every filter matches against
+// ---------------------------------------------------------------------------
+
+export type GraftType = 'allograft' | 'xenograft';
+export type GraftFormat = 'particulate' | 'syringe' | 'high-density' | 'granules';
+/** Remodeling (bone grafts) or resorption (membranes) window. */
+export type Duration = '3-4' | '4-6' | '5-6' | 'permanent';
+export type TissueOrigin = 'human' | 'bovine' | 'porcine';
+export type MembraneMaterial = 'collagen' | 'pericardium';
+export type Composition = '100-cortical' | '80-20' | '70-30' | 'bovine-cancellous';
+
+/** Clinical indication keys — labels and long-form copy live in dictionaries. */
+export type Indication =
+  | 'socket-preservation'
+  | 'sinus-augmentation'
+  | 'ridge-augmentation'
+  | 'general-bone-augmentation'
+  | 'extraction-sockets'
+  | 'implant-dehiscence'
+  | 'minimally-invasive-gbr'
+  | 'horizontal-ridge-augmentation'
+  | 'large-bony-defects'
+  | 'aesthetic-zone-augmentation'
+  | 'sinus-lifts'
+  | 'long-term-volume-maintenance'
+  | 'gbr'
+  | 'gtr'
+  | 'large-ridge-augmentation'
+  | 'complex-gbr'
+  | 'sinus-floor-protection';
+
+export interface ProductFacets {
+  type?: GraftType;
+  format?: GraftFormat;
+  /** Absent when the manufacturer has not published a figure (Bone Us Allo). */
+  duration?: Duration;
+  origin: TissueOrigin;
+  membraneMaterial?: MembraneMaterial;
+  composition?: Composition;
+  indications: Indication[];
+}
+
 export interface Product {
   id: string;
   slug: string;
+  /** Brand name — never translated. */
   name: string;
   category: 'bone-graft' | 'membrane';
+  facets: ProductFacets;
   subcategory: string;
   composition: string;
   tagline: string;
   description: string;
   specs: ProductSpecs;
-  primaryUse: string[];
   /** Available volumes/weights for bone grafts (cc or g — see unit in value string) */
   volumes?: string[];
   /**
@@ -49,8 +100,6 @@ export interface Product {
   particleSize?: string | string[];
   /** Available dimensions for membrane products */
   dimensions?: string[];
-  /** @deprecated Use volumes or dimensions instead */
-  sizes?: string[];
   packaging?: string[];
   image: string;
   relatedProducts: string[];
@@ -68,6 +117,14 @@ export const products: Product[] = [
     slug: 'renew-oss',
     name: 'Renew Oss™',
     category: 'bone-graft',
+    facets: {
+      type: 'allograft',
+      format: 'particulate',
+      duration: '3-4',
+      origin: 'human',
+      composition: '80-20',
+      indications: ['socket-preservation', 'sinus-augmentation', 'ridge-augmentation'],
+    },
     subcategory: 'Allograft · Particulate',
     composition: '80% Cortical / 20% Cancellous',
     tagline:
@@ -84,7 +141,6 @@ export const products: Product[] = [
     },
     volumes: ['0.3cc', '0.6cc', '1.0cc'],
     particleSize: '0.2 – 1.0 mm',
-    primaryUse: ['Socket preservation', 'Sinus augmentation', 'Ridge augmentation'],
     image: '/products/renew-oss.svg',
     relatedProducts: ['diaderm-m', 'titan-gide'],
   },
@@ -94,6 +150,14 @@ export const products: Product[] = [
     slug: 'do-bone',
     name: 'Do Bone™',
     category: 'bone-graft',
+    facets: {
+      type: 'allograft',
+      format: 'syringe',
+      duration: '4-6',
+      origin: 'human',
+      composition: '70-30',
+      indications: ['extraction-sockets', 'implant-dehiscence', 'minimally-invasive-gbr'],
+    },
     subcategory: 'Allograft · Syringe',
     composition: '70% Cortical / 30% Cancellous',
     tagline:
@@ -109,11 +173,6 @@ export const products: Product[] = [
     },
     volumes: ['0.25cc', '0.5cc', '1.0cc'],
     particleSize: '0.4 – 0.7 mm',
-    primaryUse: [
-      'Extraction sockets',
-      'Implant dehiscence',
-      'Minimally invasive GBR',
-    ],
     image: '/products/do-bone.svg',
     relatedProducts: ['diaderm-m', 'titan-gide'],
   },
@@ -123,6 +182,14 @@ export const products: Product[] = [
     slug: 'bone-us-allo',
     name: 'Bone Us Allo',
     category: 'bone-graft',
+    facets: {
+      type: 'allograft',
+      format: 'particulate',
+      // No remodeling window published by the manufacturer yet.
+      origin: 'human',
+      composition: '70-30',
+      indications: ['socket-preservation', 'ridge-augmentation', 'general-bone-augmentation'],
+    },
     subcategory: 'Allograft · Particulate',
     composition: '70% Cortical / 30% Cancellous',
     tagline: 'Balanced cortical-cancellous allograft particulate for versatile clinical applications.',
@@ -137,7 +204,6 @@ export const products: Product[] = [
     },
     volumes: ['0.35cc', '0.6cc', '1.1cc'],
     // TODO: confirm particle size with manufacturer before displaying publicly
-    primaryUse: ['Socket preservation', 'Ridge augmentation', 'General bone augmentation'],
     image: '/products/bone-us-allo.svg',
     relatedProducts: ['diaderm-m', 'titan-gide'],
   },
@@ -147,6 +213,14 @@ export const products: Product[] = [
     slug: 'titan-bone',
     name: 'Titan Bone™',
     category: 'bone-graft',
+    facets: {
+      type: 'allograft',
+      format: 'high-density',
+      duration: '5-6',
+      origin: 'human',
+      composition: '100-cortical',
+      indications: ['horizontal-ridge-augmentation', 'large-bony-defects'],
+    },
     subcategory: 'Allograft · High-Density',
     composition: '100% Cortical',
     tagline:
@@ -162,7 +236,6 @@ export const products: Product[] = [
     },
     volumes: ['0.3cc', '0.6cc', '1.1cc'],
     particleSize: '0.2 – 0.89 mm',
-    primaryUse: ['Horizontal ridge augmentation', 'Large bony defects'],
     image: '/products/titan-bone.svg',
     relatedProducts: ['diaderm-m', 'titan-gide'],
   },
@@ -172,6 +245,14 @@ export const products: Product[] = [
     slug: 'titan-x',
     name: 'Titan-X® / Titan-B™',
     category: 'bone-graft',
+    facets: {
+      type: 'xenograft',
+      format: 'granules',
+      duration: 'permanent',
+      origin: 'bovine',
+      composition: 'bovine-cancellous',
+      indications: ['aesthetic-zone-augmentation', 'sinus-lifts', 'long-term-volume-maintenance'],
+    },
     subcategory: 'Xenograft · Bovine',
     composition: 'Bovine Cancellous',
     tagline:
@@ -192,11 +273,6 @@ export const products: Product[] = [
     // Titan-B offers 2 particle size options; Titan-X offers 3.
     // All available variants are listed here for filter/display purposes.
     particleSize: ['0.2 – 1.0 mm', '0.5 – 1.2 mm', '1.0 – 2.0 mm', '1.2 – 1.7 mm'],
-    primaryUse: [
-      'Aesthetic zone augmentation',
-      'Sinus lifts',
-      'Long-term volume maintenance',
-    ],
     image: '/products/titan-x.svg',
     relatedProducts: ['diaderm-m', 'titan-gide'],
   },
@@ -208,6 +284,12 @@ export const products: Product[] = [
     slug: 'diaderm-m',
     name: 'Diaderm® M',
     category: 'membrane',
+    facets: {
+      duration: '3-4',
+      origin: 'porcine',
+      membraneMaterial: 'collagen',
+      indications: ['gbr', 'gtr'],
+    },
     subcategory: 'Collagen Membrane',
     composition: 'Atelocollagen',
     tagline:
@@ -223,7 +305,6 @@ export const products: Product[] = [
     },
     // Only 15 × 20 mm is currently available.
     dimensions: ['15 × 20 mm'],
-    primaryUse: ['Guided Bone Regeneration (GBR)', 'Guided Tissue Regeneration (GTR)'],
     image: '/products/diaderm-m.svg',
     relatedProducts: ['renew-oss', 'do-bone'],
   },
@@ -233,6 +314,12 @@ export const products: Product[] = [
     slug: 'titan-gide',
     name: 'Titan Gide®',
     category: 'membrane',
+    facets: {
+      duration: '4-6',
+      origin: 'bovine',
+      membraneMaterial: 'pericardium',
+      indications: ['large-ridge-augmentation', 'complex-gbr', 'sinus-floor-protection'],
+    },
     subcategory: 'Pericardium Membrane',
     composition: 'Bovine Pericardium',
     tagline:
@@ -249,11 +336,6 @@ export const products: Product[] = [
       storage: 'Room Temperature',
     },
     dimensions: ['15 × 20 mm', '20 × 30 mm', '30 × 40 mm'],
-    primaryUse: [
-      'Large ridge augmentations',
-      'Complex GBR',
-      'Sinus floor protection',
-    ],
     image: '/products/titan-gide.svg',
     relatedProducts: ['titan-x', 'titan-bone'],
   },

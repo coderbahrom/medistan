@@ -8,8 +8,12 @@ import { Navbar } from "@/components/navbar";
 import { waMsg } from "@/lib/whatsapp";
 import { products, getProductsByCategory } from "@/data/products";
 import { isBoneGraftSpecs, isMembraneSpecs } from "@/data/products";
+import type { Product } from "@/data/products";
+import { localizeProducts, fill } from "@/lib/catalog";
+import type { Dictionary } from "../dictionaries";
 import { getDictionary, hasLocale, locales } from "../dictionaries";
 import { notFound } from "next/navigation";
+import { alternatesFor, localeUrl, OG_LOCALE, ogAlternateLocales } from "@/lib/seo";
 
 export async function generateStaticParams() {
   return locales.map((lang) => ({ lang }));
@@ -20,27 +24,33 @@ export async function generateMetadata({
 }: {
   params: Promise<{ lang: string }>;
 }): Promise<Metadata> {
+  const { lang } = await params;
+  const locale = hasLocale(lang) ? lang : "en";
+  const t = (await getDictionary(locale)).seo;
+
   return {
-    title: "Products — Bone Grafts & Membranes",
-    description:
-      "Complete range of Korean dental regenerative materials: allografts, xenografts, collagen membranes, and pericardium membranes. K-FDA and CE cleared. Factory-direct wholesale.",
+    title: t.productsTitle,
+    description: t.productsDescription,
+    alternates: alternatesFor(locale, "/products"),
     openGraph: {
-      title: "Products — Bone Grafts & Membranes | Medistan",
-      description:
-        "5 bone graft materials + 2 barrier membranes. K-FDA and CE cleared. Factory-direct wholesale worldwide.",
+      title: `${t.productsTitle} | Medistan`,
+      description: t.productsDescription,
+      url: localeUrl(locale, "/products"),
+      locale: OG_LOCALE[locale],
+      alternateLocale: ogAlternateLocales(locale),
       images: [{ url: "/og/products.svg", width: 1200, height: 630 }],
     },
   };
 }
 
-function getSpecLine(p: (typeof products)[0]): string {
+function getSpecLine(p: Product, t: Dictionary["filters"]): string {
   const s = p.specs;
   if (isBoneGraftSpecs(s)) {
-    if (s.remodelingTime) return `${s.remodelingTime} remodeling`;
+    if (s.remodelingTime) return fill(t.specLineRemodeling, { time: s.remodelingTime });
     if (s.resorption) return s.resorption;
     return p.composition;
   }
-  if (isMembraneSpecs(s)) return `${s.resorptionTime} resorption`;
+  if (isMembraneSpecs(s)) return fill(t.specLineResorption, { time: s.resorptionTime });
   return p.composition;
 }
 
@@ -57,9 +67,12 @@ export default async function ProductsPage({
   const t = dict.products;
   const tc = dict.common;
 
-  const featured = featuredSlugs
-    .map((s) => products.find((p) => p.slug === s))
-    .filter((p): p is NonNullable<typeof p> => p !== undefined);
+  const featured = localizeProducts(
+    featuredSlugs
+      .map((s) => products.find((p) => p.slug === s))
+      .filter((p): p is NonNullable<typeof p> => p !== undefined),
+    dict.catalog
+  );
 
   const boneGrafts = getProductsByCategory("bone-graft");
   const membranes = getProductsByCategory("membrane");
@@ -81,8 +94,8 @@ export default async function ProductsPage({
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Home", item: "https://medistan.co.kr" },
-      { "@type": "ListItem", position: 2, name: "Products", item: "https://medistan.co.kr/products" },
+      { "@type": "ListItem", position: 1, name: dict.productDetail.home, item: localeUrl(lang) },
+      { "@type": "ListItem", position: 2, name: dict.nav.products, item: localeUrl(lang, "/products") },
     ],
   };
 
@@ -192,7 +205,7 @@ export default async function ProductsPage({
                     {p.category === "bone-graft" ? tc.boneGraft : tc.membrane}
                   </div>
                   <div className="mt-1 text-base font-semibold text-slate-900">{p.name}</div>
-                  <div className="mt-0.5 text-xs text-slate-500">{getSpecLine(p)}</div>
+                  <div className="mt-0.5 text-xs text-slate-500">{getSpecLine(p, dict.filters)}</div>
                   <div className="mt-auto pt-4 flex items-center gap-1 text-xs font-medium text-slate-900 group-hover:underline">
                     {tc.viewDetails2} <ArrowRight className="h-3 w-3" />
                   </div>

@@ -2,145 +2,126 @@ import type { Metadata } from "next";
 import { Suspense } from "react";
 import Link from "next/link";
 import { Navbar } from "@/components/navbar";
-import { CategoryView, type FilterGroup } from "@/components/category-view";
+import { CategoryView } from "@/components/category-view";
 import { getProductsByCategory, getProductBySlug } from "@/data/products";
+import { withCounts, type FilterGroup } from "@/lib/product-filters";
+import { localizeProducts } from "@/lib/catalog";
 import { waMsg } from "@/lib/whatsapp";
 import { getDictionary, hasLocale, locales } from "../../dictionaries";
+import type { Dictionary } from "../../dictionaries";
 import { notFound } from "next/navigation";
+import { alternatesFor, localeUrl, OG_LOCALE, ogAlternateLocales } from "@/lib/seo";
 
 export async function generateStaticParams() {
   return locales.map((lang) => ({ lang }));
 }
 
-export const metadata: Metadata = {
-  title: "Dental Bone Graft Materials — Allografts & Xenografts",
-  description:
-    "Korean dental bone graft materials: mineralized human allografts (particulate, syringe, high-density) and anorganic bovine xenograft. K-FDA and CE cleared. Wholesale to clinics worldwide.",
-  openGraph: {
-    title: "Dental Bone Graft Materials — Allografts & Xenografts | Medistan",
-    description:
-      "4 bone graft SKUs: Renew Oss, Do Bone, Titan Bone, Titan-X. K-FDA and CE cleared. Factory-direct wholesale.",
-    images: [{ url: "/og/bone-graft-material.svg", width: 1200, height: 630 }],
-  },
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ lang: string }>;
+}): Promise<Metadata> {
+  const { lang } = await params;
+  const locale = hasLocale(lang) ? lang : "en";
+  const t = (await getDictionary(locale)).seo;
 
-const breadcrumbJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Home", item: "https://medistan.co.kr" },
-    { "@type": "ListItem", position: 2, name: "Products", item: "https://medistan.co.kr/products" },
-    { "@type": "ListItem", position: 3, name: "Bone Graft Materials", item: "https://medistan.co.kr/products/bone-graft-material" },
-  ],
-};
+  return {
+    title: t.boneGraftTitle,
+    description: t.boneGraftDescription,
+    alternates: alternatesFor(locale, "/products/bone-graft-material"),
+    openGraph: {
+      title: `${t.boneGraftTitle} | Medistan`,
+      description: t.boneGraftDescription,
+      url: localeUrl(locale, "/products/bone-graft-material"),
+      locale: OG_LOCALE[locale],
+      alternateLocale: ogAlternateLocales(locale),
+      images: [{ url: "/og/bone-graft-material.svg", width: 1200, height: 630 }],
+    },
+  };
+}
 
-const filterGroups: FilterGroup[] = [
-  {
-    id: "type",
-    label: "Type",
-    options: [
-      { value: "allograft", label: "Allograft (4)" },
-      { value: "xenograft", label: "Xenograft (1)" },
-    ],
-  },
-  {
-    id: "format",
-    label: "Format",
-    options: [
-      { value: "particulate", label: "Particulate" },
-      { value: "syringe", label: "Syringe" },
-      { value: "high-density", label: "High-Density Block" },
-      { value: "bovine", label: "Granules (Xenograft)" },
-    ],
-  },
-  {
-    id: "remodeling",
-    label: "Remodeling / Resorption Time",
-    options: [
-      { value: "3-4", label: "3–4 months" },
-      { value: "4-6", label: "4–6 months" },
-      { value: "5-6", label: "5–6 months" },
-      { value: "permanent", label: "Very Slow (permanent)" },
-    ],
-  },
-  {
-    id: "indication",
-    label: "Indication",
-    options: [
-      { value: "socket", label: "Socket preservation" },
-      { value: "sinus", label: "Sinus lift / augmentation" },
-      { value: "ridge", label: "Ridge augmentation" },
-      { value: "aesthetic", label: "Aesthetic zone" },
-      { value: "dehiscence", label: "Implant dehiscence" },
-      { value: "large", label: "Large defects" },
-    ],
-  },
-  {
-    id: "composition",
-    label: "Composition",
-    options: [
-      { value: "100%", label: "100% Cortical" },
-      { value: "80%", label: "80/20 Cortical-Cancellous" },
-      { value: "70%", label: "70/30 Cortical-Cancellous" },
-      { value: "bovine cancellous", label: "Bovine Cancellous" },
-    ],
-  },
-  {
-    id: "volume",
-    label: "Volume (cc)",
-    options: [
-      { value: "0.25cc", label: "0.25 cc" },
-      { value: "0.3cc", label: "0.3 cc" },
-      { value: "0.35cc", label: "0.35 cc" },
-      { value: "0.5cc", label: "0.5 cc" },
-      { value: "0.6cc", label: "0.6 cc" },
-      { value: "1.0cc", label: "1.0 cc" },
-      { value: "1.1cc", label: "1.1 cc" },
-    ],
-  },
-  {
-    id: "weight",
-    label: "Weight (g)",
-    options: [
-      { value: "0.25g", label: "0.25 g" },
-      { value: "0.5g", label: "0.5 g" },
-      { value: "1.0g", label: "1.0 g" },
-      { value: "2.0g", label: "2.0 g" },
-    ],
-  },
-  {
-    id: "particleRange",
-    label: "Particle Size Range",
-    options: [
-      { value: "<0.5mm", label: "< 0.5 mm" },
-      { value: "0.5-1.0mm", label: "0.5 – 1.0 mm" },
-      { value: "1.0-2.0mm", label: "1.0 – 2.0 mm" },
-    ],
-  },
-];
-
-const faqItems = [
-  {
-    q: "What is the difference between allograft and xenograft?",
-    a: "Allografts are derived from human bone (cadaveric) and processed to preserve the mineral and protein matrix. They integrate naturally and remodel as new bone. Xenografts are derived from bovine (cow) bone mineral — all organic material is removed, leaving only the hydroxyapatite scaffold. Xenografts resorb very slowly, making them ideal where long-term volume stability is the priority.",
-  },
-  {
-    q: "How long does a bone graft take to integrate?",
-    a: "Integration time depends on the graft material and patient biology. Allografts typically show good integration in 3–6 months: Renew Oss (3–4 mo), Do Bone (4–6 mo), Titan Bone (5–6 mo). Bovine xenografts like Titan-X remain as a permanent scaffold and are gradually incorporated over years.",
-  },
-  {
-    q: "Do I always need a membrane with a bone graft?",
-    a: "In most guided bone regeneration (GBR) cases, a membrane is strongly recommended to prevent soft tissue ingrowth into the graft site. Exceptions include intra-bony defects with three or four walls. For extraction sockets and ridge augmentation procedures, a membrane significantly improves predictability.",
-  },
-  {
-    q: "Which bone graft is best for socket preservation?",
-    a: "Renew Oss™ (allograft particulate) is the most common choice for socket preservation due to its 0.25–1.0 mm particle size and its 3–4 month remodeling timeline. Do Bone™ in syringe delivery is also excellent for sockets requiring precise placement.",
-  },
-  {
-    q: "Which bone graft is best for sinus lift?",
-    a: "Both Renew Oss™ and Titan-X®/Titan-B™ are commonly used for sinus lifts. Renew Oss remodels more quickly (3–4 months). Titan-X offers superior volume stability and is preferred in cases requiring long-term volumetric predictability.",
-  },
-];
+/** Filter groups, labelled from the active locale's dictionary. */
+function buildFilterGroups(t: Dictionary["filters"]): FilterGroup[] {
+  const g = t.groups;
+  const o = t.options;
+  return [
+    {
+      id: "type",
+      label: g.type,
+      options: [
+        { value: "allograft", label: o.allograft },
+        { value: "xenograft", label: o.xenograft },
+      ],
+    },
+    {
+      id: "format",
+      label: g.format,
+      options: [
+        { value: "particulate", label: o.particulate },
+        { value: "syringe", label: o.syringe },
+        { value: "high-density", label: o["high-density"] },
+        { value: "granules", label: o.granules },
+      ],
+    },
+    {
+      id: "remodeling",
+      label: g.remodeling,
+      options: [
+        { value: "3-4", label: o["3-4"] },
+        { value: "4-6", label: o["4-6"] },
+        { value: "5-6", label: o["5-6"] },
+        { value: "permanent", label: o.permanent },
+      ],
+    },
+    {
+      id: "indication",
+      label: g.indication,
+      options: [
+        { value: "ind-socket", label: o["ind-socket"], matches: ["socket-preservation", "extraction-sockets"] },
+        { value: "ind-sinus", label: o["ind-sinus"], matches: ["sinus-augmentation", "sinus-lifts"] },
+        { value: "ind-ridge", label: o["ind-ridge"], matches: ["ridge-augmentation", "horizontal-ridge-augmentation"] },
+        { value: "ind-aesthetic", label: o["ind-aesthetic"], matches: ["aesthetic-zone-augmentation"] },
+        { value: "ind-dehiscence", label: o["ind-dehiscence"], matches: ["implant-dehiscence"] },
+        { value: "ind-large", label: o["ind-large"], matches: ["large-bony-defects"] },
+      ],
+    },
+    {
+      id: "composition",
+      label: g.composition,
+      options: [
+        { value: "100-cortical", label: o["100-cortical"] },
+        { value: "80-20", label: o["80-20"] },
+        { value: "70-30", label: o["70-30"] },
+        { value: "bovine-cancellous", label: o["bovine-cancellous"] },
+      ],
+    },
+    {
+      id: "volume",
+      label: g.volume,
+      options: ["0.25cc", "0.3cc", "0.35cc", "0.5cc", "0.6cc", "1.0cc", "1.1cc"].map((v) => ({
+        value: v,
+        label: v.replace("cc", " cc"),
+      })),
+    },
+    {
+      id: "weight",
+      label: g.weight,
+      options: ["0.25g", "0.5g", "1.0g", "2.0g"].map((v) => ({
+        value: v,
+        label: v.replace("g", " g"),
+      })),
+    },
+    {
+      id: "particleRange",
+      label: g.particleRange,
+      options: [
+        { value: "lt-05", label: o["lt-05"] },
+        { value: "05-10", label: o["05-10"] },
+        { value: "10-20", label: o["10-20"] },
+      ],
+    },
+  ];
+}
 
 const boneGraftProducts = getProductsByCategory("bone-graft");
 const relatedMembranes = (["diaderm-m", "titan-gide"] as const)
@@ -155,6 +136,20 @@ export default async function BoneGraftMaterialPage({
   const { lang } = await params;
   if (!hasLocale(lang)) notFound();
   const dict = await getDictionary(lang);
+
+  const products = localizeProducts(boneGraftProducts, dict.catalog);
+  const related = localizeProducts(relatedMembranes, dict.catalog);
+  const filterGroups = withCounts(products, buildFilterGroups(dict.filters));
+
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: dict.productDetail.home, item: localeUrl(lang) },
+      { "@type": "ListItem", position: 2, name: dict.nav.products, item: localeUrl(lang, "/products") },
+      { "@type": "ListItem", position: 3, name: dict.nav.boneGraftMaterials, item: localeUrl(lang, "/products/bone-graft-material") },
+    ],
+  };
 
   return (
     <main className="min-h-screen bg-white text-slate-900 antialiased">
@@ -183,7 +178,7 @@ export default async function BoneGraftMaterialPage({
             {dict.nav.boneGraftMaterials}
           </h1>
           <p className="mt-5 max-w-2xl text-base leading-relaxed text-slate-600">
-            Korean-manufactured bone grafting materials for oral surgeons, periodontists, and implantologists. Three human allografts — particulate, syringe delivery, and high-density cortical — plus a permanent bovine xenograft scaffold. All K-FDA and CE cleared.
+            {dict.categoryPages.boneGraftIntro}
           </p>
         </div>
       </section>
@@ -192,12 +187,13 @@ export default async function BoneGraftMaterialPage({
         <div className="mx-auto max-w-7xl px-6 lg:px-10">
           <Suspense>
             <CategoryView
-              products={boneGraftProducts}
+              products={products}
               filterGroups={filterGroups}
-              relatedTitle="Most surgeons pair their bone graft with a membrane"
-              relatedProducts={relatedMembranes}
+              relatedTitle={dict.categoryPages.relatedBone}
+              relatedProducts={related}
               categoryWhatsApp={waMsg.boneGraftCategory}
-              faqItems={faqItems}
+              faqItems={dict.faq.boneGraft}
+              t={dict.filters}
               lang={lang}
             />
           </Suspense>

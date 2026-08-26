@@ -164,5 +164,321 @@
     "wholesalePricing": "Get wholesale pricing within 24 hours. Free samples for qualified clinics.",
     "requestQuoteWhatsApp": "Request Quote on WhatsApp",
     "professionalUse": "For professional use only. This product is intended for use by trained dental professionals. Follow your institution's surgical protocols and the product's Instructions for Use (IFU) document included in each package."
+  },
+  "seo": {
+    "homeTitle": "Medistan — Korean Dental Bone Grafts & Membranes | Wholesale to Clinics Worldwide",
+    "homeDescription": "Korean-manufactured dental bone graft materials and barrier membranes for oral surgeons, periodontists, and implantologists. K-FDA and CE cleared. Factory-direct wholesale shipping worldwide.",
+    "productsTitle": "Products — Bone Grafts & Membranes",
+    "productsDescription": "Complete range of Korean dental regenerative materials: allografts, xenografts, collagen membranes, and pericardium membranes. K-FDA and CE cleared. Factory-direct wholesale.",
+    "boneGraftTitle": "Dental Bone Graft Materials — Allografts & Xenografts",
+    "boneGraftDescription": "Korean dental bone graft materials: mineralized human allografts (particulate, syringe, high-density) and anorganic bovine xenograft. K-FDA and CE cleared. Wholesale to clinics worldwide.",
+    "membraneTitle": "Dental Barrier Membranes — Collagen & Pericardium",
+    "membraneDescription": "Korean resorbable barrier membranes for GBR and GTR: Type I porcine collagen (3–4 mo) and bovine pericardium (4–6 mo). K-FDA and CE cleared. Factory-direct wholesale.",
+    "productSuffix": "K-FDA and CE cleared. Factory-direct wholesale to oral surgeons worldwide."
+  },
+  "catalog": {
+    "renew-oss": {
+      "subcategory": "Allograft · Particulate",
+      "composition": "80% Cortical / 20% Cancellous",
+      "tagline": "A premium allograft particulate designed for predictable bone regeneration. Combines structural integrity with rapid remodeling.",
+      "description": "Renew Oss™ is a premium mineralized human allograft particulate engineered for predictable guided bone regeneration. Its 80/20 cortical-to-cancellous ratio delivers optimal structural support during the critical early healing phase while the cancellous component accelerates revascularization and cellular infiltration. The 0.25–1.0 mm particulate size range provides excellent handling characteristics and adapts to irregular defect morphologies. Gamma irradiation sterilization ensures sterility without compromising the osteoinductive protein matrix.",
+      "specs": {
+        "material": "Mineralized Human Allograft",
+        "remodelingTime": "3–4 Months",
+        "sterilization": "Gamma Irradiation",
+        "format": "Particulate (0.25 mm – 1.0 mm)",
+        "storage": "Room Temperature"
+      }
+    },
+    "do-bone": {
+      "subcategory": "Allograft · Syringe",
+      "composition": "70% Cortical / 30% Cancellous",
+      "tagline": "High-performance allograft in an ergonomic delivery syringe. The 'Golden Ratio' provides enhanced revascularization while maintaining volume.",
+      "description": "Do Bone™ combines the regenerative power of a 70/30 cortical-to-cancellous allograft with the precision of a pre-filled delivery syringe. The \"Golden Ratio\" formulation is specifically calibrated to maximize revascularization speed while maintaining sufficient cortical structure for volume stability. The ergonomic syringe format allows surgeons to deliver graft material exactly where needed, minimizing handling and contamination risk. Instant rehydration makes chair-side preparation effortless.",
+      "specs": {
+        "material": "Mineralized Human Allograft",
+        "remodelingTime": "4–6 Months",
+        "handling": "Instant rehydration, precise placement",
+        "storage": "Room Temperature"
+      }
+    },
+    "bone-us-allo": {
+      "subcategory": "Allograft · Particulate",
+      "composition": "70% Cortical / 30% Cancellous",
+      "tagline": "Balanced cortical-cancellous allograft particulate for versatile clinical applications.",
+      "description": "Bone Us Allo is a mineralized human allograft particulate offering a balanced 70/30 cortical-to-cancellous ratio designed for versatile general bone augmentation. The balanced blend of structural cortical bone and revascularizing cancellous bone delivers medium remodeling speed — faster than pure cortical grafts yet more volume-stable than high-cancellous formulations. This makes it an adaptable choice for socket preservation, ridge augmentation, and general bone defect filling where predictable, moderately-paced remodeling is the goal.",
+      "specs": {
+        "material": "Mineralized Human Allograft",
+        "sterilization": "Gamma Irradiation",
+        "format": "Particulate",
+        "storage": "Room Temperature"
+      }
+    },
+    "titan-bone": {
+      "subcategory": "Allograft · High-Density",
+      "composition": "100% Cortical",
+      "tagline": "Maximum structural stability. Designed for cases where space maintenance and slow, steady remodeling are the priority.",
+      "description": "Titan Bone™ is engineered for the most demanding structural bone regeneration cases. At 100% mineralized cortical composition, it offers the highest density and compression resistance in the Medistan allograft range. This makes it the material of choice when space maintenance is paramount — particularly in horizontal ridge augmentation cases where collapsing membranes or soft tissue pressure may compromise healing. The slower 5–6 month remodeling timeline allows for complete bone integration before prosthetic loading.",
+      "specs": {
+        "material": "100% Mineralized Cortical Bone",
+        "remodelingTime": "5–6 Months",
+        "density": "High (Resists compression)",
+        "storage": "Room Temperature"
+      }
+    },
+    "titan-x": {
+      "subcategory": "Xenograft · Bovine",
+      "composition": "Bovine Cancellous",
+      "tagline": "Anorganic bovine bone mineral matrix. A permanent, osteoconductive scaffold for extreme volume stability and aesthetics.",
+      "description": "Titan-X®/Titan-B™ is an anorganic bovine bone mineral matrix processed to remove all organic components while preserving the native hydroxyapatite crystalline structure. The highly interconnected 70–80% porosity network facilitates rapid blood clot formation, cellular adhesion, and neovascularization. Its near-permanent scaffold properties make it uniquely suited for aesthetic zone cases where long-term volume maintenance is critical. The hydrophilic surface chemistry ensures instant blood uptake for optimal handling in the surgical field.",
+      "specs": {
+        "material": "Anorganic Bovine Mineral",
+        "porosity": "70%–80% Interconnected",
+        "resorption": "Very Slow (Permanent Scaffold)",
+        "hydrophilicity": "Excellent (Wicks blood instantly)",
+        "storage": "Room Temperature"
+      }
+    },
+    "diaderm-m": {
+      "subcategory": "Collagen Membrane",
+      "composition": "Atelocollagen",
+      "tagline": "Biodegradable barrier membrane. Highly biocompatible with low immunogenicity, designed for routine protection of graft sites.",
+      "description": "Diaderm® M is a Type I porcine atelocollagen membrane manufactured using a proprietary purification process that minimizes immunogenic epitopes. The result is a highly biocompatible barrier membrane with predictable 3–4 month resorption that aligns with the bone regeneration timeline. Its flexible, conformable structure adapts to complex three-dimensional defect geometries, and the high draping effect ensures intimate contact with adjacent tissues — essential for creating the protected space that allows bone regeneration to occur undisturbed.",
+      "specs": {
+        "material": "Type I Porcine Atelocollagen",
+        "resorptionTime": "3–4 Months",
+        "handling": "Flexible, high draping effect",
+        "storage": "Room Temperature"
+      }
+    },
+    "titan-gide": {
+      "subcategory": "Pericardium Membrane",
+      "composition": "Bovine Pericardium",
+      "tagline": "Premium long-term barrier. Naturally dense multi-directional fiber structure provides exceptional strength and longer protection.",
+      "description": "Titan Gide® leverages the natural multi-directional fiber architecture of bovine pericardium to deliver exceptional mechanical strength in a resorbable membrane. The dense collagen network resists tearing during suturing and membrane tacking, making it the preferred choice for large augmentations and complex GBR procedures where membrane stability is critical. Its extended 4–6 month barrier function — significantly longer than standard collagen membranes — provides protection throughout the entire critical healing phase. When hydrated, the membrane softens to zero-memory, draping naturally over the augmented site.",
+      "specs": {
+        "material": "Bovine Pericardium",
+        "resorptionTime": "4–6 Months (Extended Barrier)",
+        "handling": "Zero-memory when hydrated",
+        "tearResistance": "High (Suitable for suturing/tacking)",
+        "memory": "Zero-memory when hydrated",
+        "storage": "Room Temperature"
+      }
+    }
+  },
+  "indications": {
+    "socket-preservation": {
+      "label": "Socket preservation",
+      "detail": "Immediate post-extraction socket grafting is one of the most common indications. Placement of bone graft material in fresh extraction sockets preserves alveolar ridge dimensions, reduces resorption, and prepares the site for predictable implant placement 3–6 months later."
+    },
+    "sinus-augmentation": {
+      "label": "Sinus augmentation",
+      "detail": "Lateral window and transcrestal sinus augmentation procedures require a graft material with good handling, space-maintaining properties, and reliable integration."
+    },
+    "ridge-augmentation": {
+      "label": "Ridge augmentation",
+      "detail": "Horizontal and vertical ridge augmentation cases demand a graft material that resists soft tissue pressure, maintains space beneath the membrane, and provides adequate volume for implant support."
+    },
+    "general-bone-augmentation": {
+      "label": "General bone augmentation",
+      "detail": "Routine bone defect filling calls for a versatile, moderately-paced graft material that adapts to varied defect geometries and integrates predictably without the extremes of very fast or very slow remodeling."
+    },
+    "extraction-sockets": {
+      "label": "Extraction sockets",
+      "detail": "Syringe-delivered grafts allow precise placement in fresh extraction sockets with minimal manipulation, reducing contamination risk and optimizing graft adaptation to the socket walls."
+    },
+    "implant-dehiscence": {
+      "label": "Implant dehiscence",
+      "detail": "Buccal dehiscence defects around implants are commonly treated with a particulate or syringe graft material combined with a resorbable membrane."
+    },
+    "minimally-invasive-gbr": {
+      "label": "Minimally invasive GBR",
+      "detail": "The pre-filled syringe format enables minimally invasive GBR through smaller flap designs, reducing patient morbidity while delivering graft material precisely to the defect site."
+    },
+    "horizontal-ridge-augmentation": {
+      "label": "Horizontal ridge augmentation",
+      "detail": "Cases of severe horizontal ridge resorption require a high-density, compression-resistant graft material that can maintain ridge width against flap tension."
+    },
+    "large-bony-defects": {
+      "label": "Large bony defects",
+      "detail": "Extensive bone loss demands a structurally robust graft material capable of filling large volumes while maintaining space throughout the healing period."
+    },
+    "aesthetic-zone-augmentation": {
+      "label": "Aesthetic zone augmentation",
+      "detail": "The anterior maxilla demands exceptional volume stability. A permanent scaffold material maintains ridge contour long-term, supporting both hard and soft tissue aesthetics."
+    },
+    "sinus-lifts": {
+      "label": "Sinus lifts",
+      "detail": "In sinus lift procedures, the graft material must integrate well with the natural sinus floor while providing sufficient height and density for safe implant placement."
+    },
+    "long-term-volume-maintenance": {
+      "label": "Long-term volume maintenance",
+      "detail": "Where maintaining bone volume over years is critical, a slow-resorbing or permanent scaffold preserves the regenerated volume through the prosthetic loading phase."
+    },
+    "gbr": {
+      "label": "Guided Bone Regeneration (GBR)",
+      "detail": "GBR is the primary indication for barrier membranes. By excluding rapidly proliferating epithelial and connective tissue, the membrane creates a protected space for osteogenic cells."
+    },
+    "gtr": {
+      "label": "Guided Tissue Regeneration (GTR)",
+      "detail": "In GTR for periodontal defects, the membrane prevents epithelial downgrowth and connective tissue invasion, allowing periodontal ligament cells to regenerate the attachment apparatus."
+    },
+    "large-ridge-augmentation": {
+      "label": "Large ridge augmentations",
+      "detail": "Large augmentations place significant mechanical demands on the membrane. A tear-resistant pericardium membrane can be sutured and tacked without risk of perforation."
+    },
+    "complex-gbr": {
+      "label": "Complex GBR",
+      "detail": "Cases involving large defects or non-contained bone defects benefit from a membrane with high mechanical integrity and extended barrier function."
+    },
+    "sinus-floor-protection": {
+      "label": "Sinus floor protection",
+      "detail": "During maxillary sinus augmentation, a membrane placed against the Schneiderian membrane provides a barrier layer that protects the graft."
+    }
+  },
+  "specLabels": {
+    "category": "Category",
+    "subcategory": "Subcategory",
+    "composition": "Composition",
+    "material": "Material",
+    "remodelingTime": "Remodeling Time",
+    "sterilization": "Sterilization",
+    "format": "Format / Particle Size",
+    "density": "Density",
+    "porosity": "Porosity",
+    "resorption": "Resorption",
+    "hydrophilicity": "Hydrophilicity",
+    "handling": "Handling",
+    "resorptionTime": "Resorption Time",
+    "tearResistance": "Tear Resistance",
+    "memory": "Memory",
+    "storage": "Storage",
+    "volumes": "Available Volumes",
+    "weights": "Available Weights",
+    "particleSize": "Particle Size",
+    "dimensions": "Available Sizes",
+    "packaging": "Packaging",
+    "regulatory": "Regulatory Status",
+    "regulatoryValue": "K-FDA · CE cleared"
+  },
+  "handling": {
+    "xenograft": "Hydrophilicity: {hydrophilicity}. Moisten with blood or saline before placement. Store at room temperature away from moisture until use.",
+    "boneGraft": "Store at room temperature. Handle with standard sterile technique.",
+    "sterilizedBy": "Sterile by {sterilization}.",
+    "membraneMemory": "The membrane has {memory}, ensuring intimate tissue contact.",
+    "membraneBase": "Rehydrate in sterile saline for 30–60 seconds before placement.",
+    "membraneTear": "Tear resistance: {tearResistance}, allowing secure suturing or tacking.",
+    "membraneStorage": "Store at room temperature in the original packaging. Do not re-sterilize."
+  },
+  "filters": {
+    "filters": "Filters",
+    "clearAll": "Clear all",
+    "clearFilters": "Clear filters",
+    "noMatch": "No products match the selected filters.",
+    "productCount": "{count} products",
+    "showResults": "Show {count} results",
+    "viewDetails": "View details",
+    "quoteAria": "Request quote for {product} on WhatsApp",
+    "completeSetup": "Complete your setup",
+    "faqTitle": "Frequently Asked Questions",
+    "ctaTitle": "Ready to request pricing?",
+    "ctaSubtitle": "Get a wholesale quote within 24 hours.",
+    "ctaButton": "Request Quote on WhatsApp",
+    "specLineRemodeling": "{time} remodeling",
+    "specLineResorption": "{time} resorption",
+    "availableIn": "Available in {sizes}",
+    "groups": {
+      "type": "Type",
+      "format": "Format",
+      "remodeling": "Remodeling / Resorption Time",
+      "indication": "Indication",
+      "composition": "Composition",
+      "volume": "Volume (cc)",
+      "weight": "Weight (g)",
+      "particleRange": "Particle Size Range",
+      "material": "Material",
+      "resorption": "Resorption Time",
+      "origin": "Origin",
+      "size": "Size"
+    },
+    "options": {
+      "allograft": "Allograft",
+      "xenograft": "Xenograft",
+      "particulate": "Particulate",
+      "syringe": "Syringe",
+      "high-density": "High-Density Block",
+      "granules": "Granules (Xenograft)",
+      "3-4": "3–4 months",
+      "4-6": "4–6 months",
+      "5-6": "5–6 months",
+      "permanent": "Very Slow (permanent)",
+      "100-cortical": "100% Cortical",
+      "80-20": "80/20 Cortical-Cancellous",
+      "70-30": "70/30 Cortical-Cancellous",
+      "bovine-cancellous": "Bovine Cancellous",
+      "collagen": "Collagen",
+      "pericardium": "Pericardium",
+      "human": "Human",
+      "bovine": "Bovine",
+      "porcine": "Porcine",
+      "lt-05": "< 0.5 mm",
+      "05-10": "0.5 – 1.0 mm",
+      "10-20": "1.0 – 2.0 mm",
+      "ind-socket": "Socket preservation",
+      "ind-sinus": "Sinus lift / augmentation",
+      "ind-ridge": "Ridge augmentation",
+      "ind-aesthetic": "Aesthetic zone",
+      "ind-dehiscence": "Implant dehiscence",
+      "ind-large": "Large defects",
+      "ind-gbr": "Guided Bone Regeneration",
+      "ind-gtr": "Guided Tissue Regeneration",
+      "ind-large-ridge": "Large ridge augmentation",
+      "ind-complex-gbr": "Complex GBR",
+      "ind-sinus-floor": "Sinus floor protection"
+    }
+  },
+  "categoryPages": {
+    "boneGraftIntro": "Korean-manufactured bone grafting materials for oral surgeons, periodontists, and implantologists. Four human allografts — particulate, syringe delivery, and high-density cortical — plus a permanent bovine xenograft scaffold. All K-FDA and CE cleared.",
+    "membraneIntro": "Korean-manufactured resorbable barrier membranes for GBR and GTR procedures. Type I porcine atelocollagen (3–4 month resorption) and bovine pericardium (4–6 month resorption) — both K-FDA and CE cleared for predictable guided regeneration.",
+    "relatedBone": "Most surgeons pair their bone graft with a membrane",
+    "relatedMembrane": "Pair your membrane with a bone graft material"
+  },
+  "faq": {
+    "boneGraft": [
+      {
+        "q": "What is the difference between allograft and xenograft?",
+        "a": "Allografts are derived from human bone (cadaveric) and processed to preserve the mineral and protein matrix. They integrate naturally and remodel as new bone. Xenografts are derived from bovine (cow) bone mineral — all organic material is removed, leaving only the hydroxyapatite scaffold. Xenografts resorb very slowly, making them ideal where long-term volume stability is the priority."
+      },
+      {
+        "q": "How long does a bone graft take to integrate?",
+        "a": "Integration time depends on the graft material and patient biology. Allografts typically show good integration in 3–6 months: Renew Oss (3–4 mo), Do Bone (4–6 mo), Titan Bone (5–6 mo). Bovine xenografts like Titan-X remain as a permanent scaffold and are gradually incorporated over years."
+      },
+      {
+        "q": "Do I always need a membrane with a bone graft?",
+        "a": "In most guided bone regeneration (GBR) cases, a membrane is strongly recommended to prevent soft tissue ingrowth into the graft site. Exceptions include intra-bony defects with three or four walls. For extraction sockets and ridge augmentation procedures, a membrane significantly improves predictability."
+      },
+      {
+        "q": "Which bone graft is best for socket preservation?",
+        "a": "Renew Oss™ (allograft particulate) is the most common choice for socket preservation due to its 0.25–1.0 mm particle size and its 3–4 month remodeling timeline. Do Bone™ in syringe delivery is also excellent for sockets requiring precise placement."
+      },
+      {
+        "q": "Which bone graft is best for sinus lift?",
+        "a": "Both Renew Oss™ and Titan-X®/Titan-B™ are commonly used for sinus lifts. Renew Oss remodels more quickly (3–4 months). Titan-X offers superior volume stability and is preferred in cases requiring long-term volumetric predictability."
+      }
+    ],
+    "membrane": [
+      {
+        "q": "What's the difference between collagen and pericardium membranes?",
+        "a": "Collagen membranes (like Diaderm® M) are made from porcine atelocollagen, offering excellent flexibility and a 3–4 month resorption that matches standard GBR healing. Pericardium membranes (like Titan Gide®) are made from bovine pericardium — a naturally dense, multi-directional fiber structure that provides superior tear resistance and a longer 4–6 month barrier."
+      },
+      {
+        "q": "How do I choose between resorbable membrane options?",
+        "a": "Choose based on defect size, expected healing time, and surgical complexity. For routine socket preservation or small defects: Diaderm® M (collagen, 3–4 mo). For large ridge augmentations or when suturing/tacking is needed: Titan Gide® (pericardium, 4–6 mo)."
+      },
+      {
+        "q": "Can I use a membrane without a bone graft?",
+        "a": "Yes — in GTR for periodontal defects, a membrane alone is used to exclude epithelial and connective tissue. However, for most GBR bone augmentation procedures, combining a membrane with a bone graft material significantly improves volumetric outcomes."
+      }
+    ]
   }
 }

@@ -26,24 +26,26 @@ import { cn } from "@/lib/utils";
 import { Navbar } from "@/components/navbar";
 import { waMsg } from "@/lib/whatsapp";
 import { products, isBoneGraftSpecs, isMembraneSpecs } from "@/data/products";
+import type { Product } from "@/data/products";
+import { localizeProducts, fill } from "@/lib/catalog";
 import { getDictionary, hasLocale } from "./dictionaries";
 import { notFound } from "next/navigation";
 import type { Dictionary } from "./dictionaries";
 
 const featuredSlugs = ["renew-oss", "titan-x", "diaderm-m", "titan-gide"];
-const featuredProducts = featuredSlugs
+const featuredSource = featuredSlugs
   .map((s) => products.find((p) => p.slug === s))
   .filter((p): p is NonNullable<typeof p> => p !== undefined);
 
-function getSpecLine(p: (typeof products)[0]): string {
+function getSpecLine(p: Product, t: Dictionary["filters"]): string {
   if (isBoneGraftSpecs(p.specs)) {
     if (p.specs.remodelingTime)
-      return `${p.specs.remodelingTime} remodeling · ${p.composition}`;
+      return `${fill(t.specLineRemodeling, { time: p.specs.remodelingTime })} · ${p.composition}`;
     if (p.specs.resorption) return `${p.specs.resorption} · ${p.composition}`;
     return p.composition;
   }
   if (isMembraneSpecs(p.specs)) {
-    return `${p.specs.resorptionTime} resorption · ${p.specs.material.split(" ").slice(-1)[0]}`;
+    return `${fill(t.specLineResorption, { time: p.specs.resorptionTime })} · ${p.specs.material.split(" ").slice(-1)[0]}`;
   }
   return p.composition;
 }
@@ -89,8 +91,8 @@ export default async function HomePage({
       <TrustFeatures lang={lang} t={dict} />
       <FeaturedProducts lang={lang} t={dict} />
       <Testimonials t={dict} />
-      <About lang={lang} t={dict} />
-      <FinalCta lang={lang} t={dict} />
+      <About t={dict} />
+      <FinalCta t={dict} />
       <Footer lang={lang} t={dict} />
       <WhatsAppFloat t={dict.common} />
     </main>
@@ -343,6 +345,7 @@ function TrustFeatures({ lang, t }: { lang: string; t: Dictionary }) {
 }
 
 function FeaturedProducts({ lang, t }: { lang: string; t: Dictionary }) {
+  const featuredProducts = localizeProducts(featuredSource, t.catalog);
   return (
     <section
       id="products"
@@ -398,7 +401,7 @@ function FeaturedProducts({ lang, t }: { lang: string; t: Dictionary }) {
                   </CardDescription>
                 </div>
                 <p className="border-t border-slate-100 pt-3 text-xs leading-relaxed text-slate-600">
-                  {getSpecLine(p)}
+                  {getSpecLine(p, t.filters)}
                 </p>
               </CardContent>
 
@@ -482,7 +485,7 @@ function Testimonials({ t }: { t: Dictionary }) {
   );
 }
 
-function About({ lang, t }: { lang: string; t: Dictionary }) {
+function About({ t }: { t: Dictionary }) {
   const aboutStats = [
     { label: t.aboutStats.founded, value: "2024" },
     { label: t.aboutStats.isoStandard, value: "13485:2016" },
@@ -539,7 +542,7 @@ function About({ lang, t }: { lang: string; t: Dictionary }) {
   );
 }
 
-function FinalCta({ lang, t }: { lang: string; t: Dictionary }) {
+function FinalCta({ t }: { t: Dictionary }) {
   return (
     <section
       id="contact"

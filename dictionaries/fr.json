@@ -164,5 +164,321 @@
     "wholesalePricing": "Obtenez les tarifs grossiste sous 24 heures. Échantillons gratuits pour les cliniques qualifiées.",
     "requestQuoteWhatsApp": "Demander un devis sur WhatsApp",
     "professionalUse": "Réservé à un usage professionnel. Ce produit est destiné à être utilisé par des professionnels dentaires formés. Suivez les protocoles chirurgicaux de votre établissement et le document Instructions d'utilisation (IFU) inclus dans chaque emballage."
+  },
+  "seo": {
+    "homeTitle": "Medistan — Substituts osseux et membranes dentaires coréens | Vente en gros aux cliniques du monde entier",
+    "homeDescription": "Substituts osseux dentaires et membranes barrières fabriqués en Corée pour chirurgiens oraux, parodontistes et implantologues. Homologués K-FDA et CE. Vente en gros directe usine, expédition mondiale.",
+    "productsTitle": "Produits — Substituts osseux et membranes",
+    "productsDescription": "Gamme complète de matériaux régénératifs dentaires coréens : allogreffes, xénogreffes, membranes en collagène et en péricarde. Homologués K-FDA et CE. Vente en gros directe usine.",
+    "boneGraftTitle": "Substituts osseux dentaires — Allogreffes et xénogreffes",
+    "boneGraftDescription": "Substituts osseux dentaires coréens : allogreffes humaines minéralisées (particules, seringue, haute densité) et xénogreffe bovine anorganique. Homologués K-FDA et CE. Vente en gros mondiale.",
+    "membraneTitle": "Membranes barrières dentaires — Collagène et péricarde",
+    "membraneDescription": "Membranes barrières résorbables pour ROG et RTG : collagène porcin de type I (3–4 mois) et péricarde bovin (4–6 mois). Homologués K-FDA et CE. Vente en gros directe usine.",
+    "productSuffix": "Homologués K-FDA et CE. Vente en gros directe usine aux chirurgiens dentistes du monde entier."
+  },
+  "catalog": {
+    "renew-oss": {
+      "subcategory": "Allogreffe · Particules",
+      "composition": "80 % cortical / 20 % spongieux",
+      "tagline": "Une allogreffe particulaire haut de gamme conçue pour une régénération osseuse prévisible. Elle allie intégrité structurelle et remodelage rapide.",
+      "description": "Renew Oss™ est une allogreffe humaine minéralisée particulaire haut de gamme, conçue pour une régénération osseuse guidée prévisible. Son rapport cortico-spongieux de 80/20 assure un soutien structurel optimal pendant la phase précoce critique de cicatrisation, tandis que la composante spongieuse accélère la revascularisation et l'infiltration cellulaire. La granulométrie de 0,25 à 1,0 mm offre d'excellentes qualités de manipulation et s'adapte aux morphologies de défauts irrégulières. La stérilisation par rayonnement gamma garantit la stérilité sans altérer la matrice protéique ostéo-inductrice.",
+      "specs": {
+        "material": "Allogreffe humaine minéralisée",
+        "remodelingTime": "3–4 mois",
+        "sterilization": "Rayonnement gamma",
+        "format": "Particules (0,25 mm – 1,0 mm)",
+        "storage": "Température ambiante"
+      }
+    },
+    "do-bone": {
+      "subcategory": "Allogreffe · Seringue",
+      "composition": "70 % cortical / 30 % spongieux",
+      "tagline": "Allogreffe haute performance en seringue ergonomique. Le « ratio d'or » améliore la revascularisation tout en maintenant le volume.",
+      "description": "Do Bone™ associe le potentiel régénératif d'une allogreffe cortico-spongieuse 70/30 à la précision d'une seringue préremplie. La formulation dite du « ratio d'or » est calibrée pour maximiser la vitesse de revascularisation tout en conservant une structure corticale suffisante pour la stabilité volumétrique. Le format ergonomique de la seringue permet au chirurgien de déposer le matériau exactement là où il est nécessaire, en réduisant les manipulations et le risque de contamination. La réhydratation instantanée rend la préparation au fauteuil très simple.",
+      "specs": {
+        "material": "Allogreffe humaine minéralisée",
+        "remodelingTime": "4–6 mois",
+        "handling": "Réhydratation instantanée, dépose précise",
+        "storage": "Température ambiante"
+      }
+    },
+    "bone-us-allo": {
+      "subcategory": "Allogreffe · Particules",
+      "composition": "70 % cortical / 30 % spongieux",
+      "tagline": "Allogreffe particulaire cortico-spongieuse équilibrée pour des applications cliniques polyvalentes.",
+      "description": "Bone Us Allo est une allogreffe humaine minéralisée particulaire au rapport cortico-spongieux équilibré de 70/30, conçue pour l'augmentation osseuse polyvalente. Le mélange d'os cortical structurel et d'os spongieux revascularisant procure une vitesse de remodelage intermédiaire — plus rapide que les greffons purement corticaux, tout en restant plus stable en volume que les formulations très spongieuses. C'est donc un choix adaptable pour la préservation alvéolaire, l'augmentation de crête et le comblement de défauts osseux lorsque l'on recherche un remodelage prévisible et modéré.",
+      "specs": {
+        "material": "Allogreffe humaine minéralisée",
+        "sterilization": "Rayonnement gamma",
+        "format": "Particules",
+        "storage": "Température ambiante"
+      }
+    },
+    "titan-bone": {
+      "subcategory": "Allogreffe · Haute densité",
+      "composition": "100 % cortical",
+      "tagline": "Stabilité structurelle maximale. Conçu pour les cas où le maintien de l'espace et un remodelage lent et régulier priment.",
+      "description": "Titan Bone™ est conçu pour les cas de régénération osseuse structurelle les plus exigeants. Avec une composition 100 % corticale minéralisée, il offre la densité et la résistance à la compression les plus élevées de la gamme d'allogreffes Medistan. C'est le matériau de choix lorsque le maintien de l'espace est primordial — en particulier lors des augmentations horizontales de crête, où l'affaissement de la membrane ou la pression des tissus mous peut compromettre la cicatrisation. Le délai de remodelage plus long, de 5 à 6 mois, permet une intégration osseuse complète avant la mise en charge prothétique.",
+      "specs": {
+        "material": "Os cortical minéralisé à 100 %",
+        "remodelingTime": "5–6 mois",
+        "density": "Élevée (résiste à la compression)",
+        "storage": "Température ambiante"
+      }
+    },
+    "titan-x": {
+      "subcategory": "Xénogreffe · Bovine",
+      "composition": "Os spongieux bovin",
+      "tagline": "Matrice minérale osseuse bovine anorganique. Un échafaudage ostéoconducteur permanent pour une stabilité volumétrique et une esthétique optimales.",
+      "description": "Titan-X®/Titan-B™ est une matrice minérale osseuse bovine anorganique traitée pour éliminer tous les composants organiques tout en préservant la structure cristalline native d'hydroxyapatite. Le réseau poreux fortement interconnecté, d'une porosité de 70 à 80 %, favorise la formation rapide du caillot, l'adhésion cellulaire et la néovascularisation. Ses propriétés d'échafaudage quasi permanent le rendent particulièrement adapté aux cas du secteur esthétique, où le maintien du volume à long terme est déterminant. La chimie de surface hydrophile assure une absorption immédiate du sang pour une manipulation optimale dans le champ opératoire.",
+      "specs": {
+        "material": "Minéral bovin anorganique",
+        "porosity": "70 %–80 % interconnectée",
+        "resorption": "Très lente (échafaudage permanent)",
+        "hydrophilicity": "Excellente (absorbe le sang instantanément)",
+        "storage": "Température ambiante"
+      }
+    },
+    "diaderm-m": {
+      "subcategory": "Membrane en collagène",
+      "composition": "Atélocollagène",
+      "tagline": "Membrane barrière biodégradable. Très biocompatible et faiblement immunogène, conçue pour protéger les sites greffés en routine.",
+      "description": "Diaderm® M est une membrane d'atélocollagène porcin de type I fabriquée selon un procédé de purification propriétaire qui minimise les épitopes immunogènes. Il en résulte une membrane barrière très biocompatible, avec une résorption prévisible de 3 à 4 mois alignée sur le calendrier de la régénération osseuse. Sa structure souple et adaptable épouse les géométries tridimensionnelles complexes des défauts, et son fort effet drapant assure un contact intime avec les tissus adjacents — condition essentielle pour créer l'espace protégé dans lequel la régénération osseuse se déroule sans perturbation.",
+      "specs": {
+        "material": "Atélocollagène porcin de type I",
+        "resorptionTime": "3–4 mois",
+        "handling": "Souple, fort effet drapant",
+        "storage": "Température ambiante"
+      }
+    },
+    "titan-gide": {
+      "subcategory": "Membrane en péricarde",
+      "composition": "Péricarde bovin",
+      "tagline": "Barrière longue durée haut de gamme. Sa structure fibreuse multidirectionnelle naturellement dense offre une résistance exceptionnelle et une protection prolongée.",
+      "description": "Titan Gide® exploite l'architecture fibreuse multidirectionnelle naturelle du péricarde bovin pour offrir une résistance mécanique exceptionnelle dans une membrane résorbable. Le réseau de collagène dense résiste à la déchirure lors de la suture et de la fixation par pins, ce qui en fait le choix privilégié pour les grandes augmentations et les procédures de ROG complexes où la stabilité de la membrane est déterminante. Sa fonction barrière prolongée de 4 à 6 mois — nettement plus longue que celle des membranes en collagène standard — protège pendant toute la phase critique de cicatrisation. Une fois hydratée, la membrane s'assouplit, perd toute mémoire de forme et se drape naturellement sur le site augmenté.",
+      "specs": {
+        "material": "Péricarde bovin",
+        "resorptionTime": "4–6 mois (barrière prolongée)",
+        "handling": "Sans mémoire de forme une fois hydratée",
+        "tearResistance": "Élevée (adaptée à la suture et aux pins)",
+        "memory": "Sans mémoire de forme une fois hydratée",
+        "storage": "Température ambiante"
+      }
+    }
+  },
+  "indications": {
+    "socket-preservation": {
+      "label": "Préservation alvéolaire",
+      "detail": "Le comblement alvéolaire immédiat après extraction est l'une des indications les plus fréquentes. La mise en place du matériau dans l'alvéole fraîche préserve les dimensions de la crête alvéolaire, réduit la résorption et prépare le site à une pose d'implant prévisible 3 à 6 mois plus tard."
+    },
+    "sinus-augmentation": {
+      "label": "Augmentation sinusienne",
+      "detail": "Les augmentations sinusiennes par fenêtre latérale ou par voie transcrestale exigent un matériau à la manipulation aisée, doté de propriétés de maintien de l'espace et d'une intégration fiable."
+    },
+    "ridge-augmentation": {
+      "label": "Augmentation de crête",
+      "detail": "Les augmentations de crête horizontales et verticales exigent un matériau qui résiste à la pression des tissus mous, maintient l'espace sous la membrane et fournit un volume suffisant pour soutenir l'implant."
+    },
+    "general-bone-augmentation": {
+      "label": "Augmentation osseuse générale",
+      "detail": "Le comblement courant des défauts osseux appelle un matériau polyvalent au remodelage modéré, capable de s'adapter à des géométries variées et de s'intégrer de façon prévisible, sans les extrêmes d'un remodelage très rapide ou très lent."
+    },
+    "extraction-sockets": {
+      "label": "Alvéoles d'extraction",
+      "detail": "Le matériau délivré à la seringue se dépose précisément dans l'alvéole fraîche avec un minimum de manipulations, ce qui réduit le risque de contamination et optimise l'adaptation aux parois alvéolaires."
+    },
+    "implant-dehiscence": {
+      "label": "Déhiscence implantaire",
+      "detail": "Les déhiscences vestibulaires autour des implants sont couramment traitées avec un matériau particulaire ou en seringue, associé à une membrane résorbable."
+    },
+    "minimally-invasive-gbr": {
+      "label": "ROG mini-invasive",
+      "detail": "Le format en seringue préremplie permet une ROG mini-invasive avec des lambeaux plus petits, réduisant la morbidité tout en déposant le matériau précisément dans le défaut."
+    },
+    "horizontal-ridge-augmentation": {
+      "label": "Augmentation horizontale de crête",
+      "detail": "En cas de résorption horizontale sévère, il faut un matériau dense et résistant à la compression, capable de maintenir la largeur de crête malgré la tension du lambeau."
+    },
+    "large-bony-defects": {
+      "label": "Défauts osseux étendus",
+      "detail": "Une perte osseuse importante exige un matériau structurellement robuste, capable de combler de grands volumes tout en maintenant l'espace durant toute la cicatrisation."
+    },
+    "aesthetic-zone-augmentation": {
+      "label": "Augmentation du secteur esthétique",
+      "detail": "Le maxillaire antérieur exige une stabilité volumétrique exceptionnelle. Un échafaudage permanent conserve le contour de la crête à long terme et soutient l'esthétique des tissus durs et mous."
+    },
+    "sinus-lifts": {
+      "label": "Sinus lift",
+      "detail": "Lors d'un sinus lift, le matériau doit bien s'intégrer au plancher sinusien naturel tout en apportant hauteur et densité suffisantes pour une pose d'implant sûre."
+    },
+    "long-term-volume-maintenance": {
+      "label": "Maintien du volume à long terme",
+      "detail": "Lorsque le maintien du volume osseux sur plusieurs années est déterminant, un échafaudage à résorption lente ou permanent préserve le volume régénéré pendant toute la phase de mise en charge prothétique."
+    },
+    "gbr": {
+      "label": "Régénération osseuse guidée (ROG/GBR)",
+      "detail": "La ROG est l'indication principale des membranes barrières. En excluant l'épithélium et le tissu conjonctif à prolifération rapide, la membrane crée un espace protégé pour les cellules ostéogéniques."
+    },
+    "gtr": {
+      "label": "Régénération tissulaire guidée (RTG/GTR)",
+      "detail": "En RTG des défauts parodontaux, la membrane empêche la migration épithéliale et l'invasion conjonctive, permettant aux cellules du ligament parodontal de régénérer l'appareil d'attache."
+    },
+    "large-ridge-augmentation": {
+      "label": "Grandes augmentations de crête",
+      "detail": "Les grandes augmentations sollicitent fortement la membrane sur le plan mécanique. Une membrane en péricarde résistante à la déchirure peut être suturée et fixée par pins sans risque de perforation."
+    },
+    "complex-gbr": {
+      "label": "ROG complexe",
+      "detail": "Les défauts étendus ou non contenus bénéficient d'une membrane à forte intégrité mécanique et à fonction barrière prolongée."
+    },
+    "sinus-floor-protection": {
+      "label": "Protection du plancher sinusien",
+      "detail": "Lors de l'augmentation du sinus maxillaire, une membrane appliquée contre la membrane de Schneider constitue une couche barrière qui protège le greffon."
+    }
+  },
+  "specLabels": {
+    "category": "Catégorie",
+    "subcategory": "Sous-catégorie",
+    "composition": "Composition",
+    "material": "Matériau",
+    "remodelingTime": "Durée de remodelage",
+    "sterilization": "Stérilisation",
+    "format": "Forme / granulométrie",
+    "density": "Densité",
+    "porosity": "Porosité",
+    "resorption": "Résorption",
+    "hydrophilicity": "Hydrophilie",
+    "handling": "Manipulation",
+    "resorptionTime": "Durée de résorption",
+    "tearResistance": "Résistance à la déchirure",
+    "memory": "Mémoire de forme",
+    "storage": "Conservation",
+    "volumes": "Volumes disponibles",
+    "weights": "Poids disponibles",
+    "particleSize": "Granulométrie",
+    "dimensions": "Tailles disponibles",
+    "packaging": "Conditionnement",
+    "regulatory": "Statut réglementaire",
+    "regulatoryValue": "Homologué K-FDA · CE"
+  },
+  "handling": {
+    "xenograft": "Hydrophilie : {hydrophilicity}. Humidifiez avec du sang ou du sérum physiologique avant la mise en place. Conservez à température ambiante, à l'abri de l'humidité, jusqu'à l'utilisation.",
+    "boneGraft": "Conserver à température ambiante. Manipuler selon les techniques stériles habituelles.",
+    "sterilizedBy": "Stérilisé par : {sterilization}.",
+    "membraneMemory": "La membrane est {memory}, ce qui garantit un contact intime avec les tissus.",
+    "membraneBase": "Réhydratez dans du sérum physiologique stérile pendant 30 à 60 secondes avant la mise en place.",
+    "membraneTear": "Résistance à la déchirure : {tearResistance}, permettant une suture ou une fixation par pins sûre.",
+    "membraneStorage": "Conserver à température ambiante dans l'emballage d'origine. Ne pas restériliser."
+  },
+  "filters": {
+    "filters": "Filtres",
+    "clearAll": "Tout effacer",
+    "clearFilters": "Effacer les filtres",
+    "noMatch": "Aucun produit ne correspond aux filtres sélectionnés.",
+    "productCount": "{count} produits",
+    "showResults": "Afficher {count} résultats",
+    "viewDetails": "Voir le détail",
+    "quoteAria": "Demander un devis pour {product} sur WhatsApp",
+    "completeSetup": "Complétez votre protocole",
+    "faqTitle": "Questions fréquentes",
+    "ctaTitle": "Prêt à demander un tarif ?",
+    "ctaSubtitle": "Devis de gros sous 24 heures.",
+    "ctaButton": "Demander un devis sur WhatsApp",
+    "specLineRemodeling": "remodelage {time}",
+    "specLineResorption": "résorption {time}",
+    "availableIn": "Disponible en {sizes}",
+    "groups": {
+      "type": "Type",
+      "format": "Forme",
+      "remodeling": "Durée de remodelage / résorption",
+      "indication": "Indication",
+      "composition": "Composition",
+      "volume": "Volume (cc)",
+      "weight": "Poids (g)",
+      "particleRange": "Plage granulométrique",
+      "material": "Matériau",
+      "resorption": "Durée de résorption",
+      "origin": "Origine",
+      "size": "Taille"
+    },
+    "options": {
+      "allograft": "Allogreffe",
+      "xenograft": "Xénogreffe",
+      "particulate": "Particules",
+      "syringe": "Seringue",
+      "high-density": "Bloc haute densité",
+      "granules": "Granules (xénogreffe)",
+      "3-4": "3–4 mois",
+      "4-6": "4–6 mois",
+      "5-6": "5–6 mois",
+      "permanent": "Très lente (permanente)",
+      "100-cortical": "100 % cortical",
+      "80-20": "80/20 cortico-spongieux",
+      "70-30": "70/30 cortico-spongieux",
+      "bovine-cancellous": "Spongieux bovin",
+      "collagen": "Collagène",
+      "pericardium": "Péricarde",
+      "human": "Humaine",
+      "bovine": "Bovine",
+      "porcine": "Porcine",
+      "lt-05": "< 0,5 mm",
+      "05-10": "0,5 – 1,0 mm",
+      "10-20": "1,0 – 2,0 mm",
+      "ind-socket": "Préservation alvéolaire",
+      "ind-sinus": "Sinus lift / augmentation",
+      "ind-ridge": "Augmentation de crête",
+      "ind-aesthetic": "Secteur esthétique",
+      "ind-dehiscence": "Déhiscence implantaire",
+      "ind-large": "Défauts étendus",
+      "ind-gbr": "Régénération osseuse guidée",
+      "ind-gtr": "Régénération tissulaire guidée",
+      "ind-large-ridge": "Grande augmentation de crête",
+      "ind-complex-gbr": "ROG complexe",
+      "ind-sinus-floor": "Protection du plancher sinusien"
+    }
+  },
+  "categoryPages": {
+    "boneGraftIntro": "Substituts osseux fabriqués en Corée pour chirurgiens oraux, parodontistes et implantologues. Quatre allogreffes humaines — particules, seringue et os cortical haute densité — plus une xénogreffe bovine à échafaudage permanent. Toutes homologuées K-FDA et CE.",
+    "membraneIntro": "Membranes barrières résorbables fabriquées en Corée pour les procédures de ROG et de RTG. Atélocollagène porcin de type I (résorption 3–4 mois) et péricarde bovin (résorption 4–6 mois) — toutes deux homologuées K-FDA et CE pour une régénération guidée prévisible.",
+    "relatedBone": "La plupart des chirurgiens associent leur substitut osseux à une membrane",
+    "relatedMembrane": "Associez votre membrane à un substitut osseux"
+  },
+  "faq": {
+    "boneGraft": [
+      {
+        "q": "Quelle est la différence entre allogreffe et xénogreffe ?",
+        "a": "Les allogreffes proviennent d'os humain (de donneur) et sont traitées de façon à préserver la matrice minérale et protéique. Elles s'intègrent naturellement et se remodèlent en os nouveau. Les xénogreffes proviennent du minéral osseux bovin : toute la matière organique est éliminée, ne laissant que l'échafaudage d'hydroxyapatite. Les xénogreffes se résorbent très lentement, ce qui les rend idéales lorsque la stabilité volumétrique à long terme prime."
+      },
+      {
+        "q": "Combien de temps faut-il pour qu'un greffon osseux s'intègre ?",
+        "a": "Le délai d'intégration dépend du matériau et de la biologie du patient. Les allogreffes montrent en général une bonne intégration en 3 à 6 mois : Renew Oss (3–4 mois), Do Bone (4–6 mois), Titan Bone (5–6 mois). Les xénogreffes bovines comme Titan-X restent un échafaudage permanent et sont incorporées progressivement au fil des années."
+      },
+      {
+        "q": "Faut-il toujours une membrane avec un greffon osseux ?",
+        "a": "Dans la plupart des cas de régénération osseuse guidée (ROG), une membrane est fortement recommandée pour empêcher l'invasion du site greffé par les tissus mous. Font exception les défauts intra-osseux à trois ou quatre parois. Pour les alvéoles d'extraction et les augmentations de crête, la membrane améliore nettement la prévisibilité."
+      },
+      {
+        "q": "Quel greffon osseux choisir pour la préservation alvéolaire ?",
+        "a": "Renew Oss™ (allogreffe particulaire) est le choix le plus courant pour la préservation alvéolaire, grâce à sa granulométrie de 0,25 à 1,0 mm et à son remodelage en 3 à 4 mois. Do Bone™ en seringue convient également très bien aux alvéoles nécessitant une dépose précise."
+      },
+      {
+        "q": "Quel greffon osseux choisir pour un sinus lift ?",
+        "a": "Renew Oss™ et Titan-X®/Titan-B™ sont tous deux couramment utilisés pour les sinus lifts. Renew Oss se remodèle plus rapidement (3 à 4 mois). Titan-X offre une meilleure stabilité volumétrique et est préféré lorsque la prévisibilité du volume à long terme est requise."
+      }
+    ],
+    "membrane": [
+      {
+        "q": "Quelle différence entre membranes en collagène et en péricarde ?",
+        "a": "Les membranes en collagène (comme Diaderm® M) sont faites d'atélocollagène porcin : très souples, elles se résorbent en 3 à 4 mois, ce qui correspond à la cicatrisation ROG standard. Les membranes en péricarde (comme Titan Gide®) sont faites de péricarde bovin — une structure fibreuse multidirectionnelle naturellement dense qui offre une meilleure résistance à la déchirure et une barrière plus longue, de 4 à 6 mois."
+      },
+      {
+        "q": "Comment choisir entre les membranes résorbables ?",
+        "a": "Choisissez selon la taille du défaut, la durée de cicatrisation attendue et la complexité chirurgicale. Pour une préservation alvéolaire de routine ou de petits défauts : Diaderm® M (collagène, 3–4 mois). Pour les grandes augmentations de crête ou lorsqu'une suture / fixation par pins est nécessaire : Titan Gide® (péricarde, 4–6 mois)."
+      },
+      {
+        "q": "Peut-on utiliser une membrane sans greffon osseux ?",
+        "a": "Oui — en RTG des défauts parodontaux, la membrane est utilisée seule pour exclure l'épithélium et le tissu conjonctif. Cependant, pour la plupart des augmentations osseuses en ROG, associer la membrane à un substitut osseux améliore nettement le résultat volumétrique."
+      }
+    ]
   }
 }
