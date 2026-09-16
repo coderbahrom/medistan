@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="Medistan">
+  <rect width="32" height="32" rx="7" fill="#0F172A"/>
+  <path
+    d="M6 24V8h4l6 9 6-9h4v16h-3.8v-9.4L17.2 22.4h-2.4L9.8 14.6V24H6Z"
+    fill="#FFFFFF"/>
+</svg>

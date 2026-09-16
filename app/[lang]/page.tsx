@@ -55,7 +55,7 @@ const orgJsonLd = {
   "@type": "Organization",
   name: "Medistan",
   url: "https://medistan.co.kr",
-  logo: "https://medistan.co.kr/favicon.svg",
+  logo: "https://medistan.co.kr/logo.svg",
   description:
     "Korean manufacturer of dental regenerative materials — bone graft allografts, bovine xenografts, collagen membranes, and pericardium membranes for oral surgeons and periodontists worldwide.",
   address: {
@@ -386,7 +386,7 @@ function FeaturedProducts({ lang, t }: { lang: string; t: Dictionary }) {
                     alt={`${p.name} — ${p.subcategory} for guided bone regeneration`}
                     fill
                     className="object-contain p-6"
-                    unoptimized
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                   />
                 </div>
               </CardHeader>

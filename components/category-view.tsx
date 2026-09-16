@@ -331,7 +331,7 @@ export function CategoryView({
                       alt={`${p.name} — ${p.subcategory}`}
                       fill
                       className="object-contain p-6"
-                      unoptimized
+                      sizes="(max-width: 640px) 100vw, 50vw"
                     />
                   </div>
                   <div className="flex flex-1 flex-col p-5">
@@ -415,7 +415,7 @@ export function CategoryView({
                         alt={rp.name}
                         fill
                         className="object-contain p-1"
-                        unoptimized
+                        sizes="56px"
                       />
                     </div>
                     <div className="min-w-0">

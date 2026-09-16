@@ -141,7 +141,7 @@ export const products: Product[] = [
     },
     volumes: ['0.3cc', '0.6cc', '1.0cc'],
     particleSize: '0.2 – 1.0 mm',
-    image: '/products/renew-oss.svg',
+    image: '/products/renew-oss.webp',
     relatedProducts: ['diaderm-m', 'titan-gide'],
   },
 
@@ -173,7 +173,7 @@ export const products: Product[] = [
     },
     volumes: ['0.25cc', '0.5cc', '1.0cc'],
     particleSize: '0.4 – 0.7 mm',
-    image: '/products/do-bone.svg',
+    image: '/products/do-bone.webp',
     relatedProducts: ['diaderm-m', 'titan-gide'],
   },
 
@@ -204,7 +204,7 @@ export const products: Product[] = [
     },
     volumes: ['0.35cc', '0.6cc', '1.1cc'],
     // TODO: confirm particle size with manufacturer before displaying publicly
-    image: '/products/bone-us-allo.svg',
+    image: '/products/bone-us-allo.webp',
     relatedProducts: ['diaderm-m', 'titan-gide'],
   },
 
@@ -236,7 +236,7 @@ export const products: Product[] = [
     },
     volumes: ['0.3cc', '0.6cc', '1.1cc'],
     particleSize: '0.2 – 0.89 mm',
-    image: '/products/titan-bone.svg',
+    image: '/products/titan-bone.webp',
     relatedProducts: ['diaderm-m', 'titan-gide'],
   },
 
@@ -273,7 +273,7 @@ export const products: Product[] = [
     // Titan-B offers 2 particle size options; Titan-X offers 3.
     // All available variants are listed here for filter/display purposes.
     particleSize: ['0.2 – 1.0 mm', '0.5 – 1.2 mm', '1.0 – 2.0 mm', '1.2 – 1.7 mm'],
-    image: '/products/titan-x.svg',
+    image: '/products/titan-x.webp',
     relatedProducts: ['diaderm-m', 'titan-gide'],
   },
 
@@ -305,7 +305,7 @@ export const products: Product[] = [
     },
     // Only 15 × 20 mm is currently available.
     dimensions: ['15 × 20 mm'],
-    image: '/products/diaderm-m.svg',
+    image: '/products/diaderm-m.webp',
     relatedProducts: ['renew-oss', 'do-bone'],
   },
 
@@ -336,7 +336,7 @@ export const products: Product[] = [
       storage: 'Room Temperature',
     },
     dimensions: ['15 × 20 mm', '20 × 30 mm', '30 × 40 mm'],
-    image: '/products/titan-gide.svg',
+    image: '/products/titan-gide.webp',
     relatedProducts: ['titan-x', 'titan-bone'],
   },
 ];
