@@ -1,3 +1,12 @@
+// ---------------------------------------------------------------------------
+// Prefilled WhatsApp messages.
+//
+// These stay in ENGLISH in every locale, deliberately: the sales team replies
+// in English only, so a message prefilled in Arabic (or Russian, German,
+// French) would start a conversation they cannot continue. The button labels
+// around them ARE translated — only the message body is not.
+// ---------------------------------------------------------------------------
+
 const WA_NUMBER =
   typeof process !== "undefined"
     ? (process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "821044959591")

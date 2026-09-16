@@ -198,7 +198,7 @@ export default async function ProductsPage({
                 className="group flex flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white transition-all hover:-translate-y-0.5 hover:shadow-lg hover:shadow-slate-200/60"
               >
                 <div className="relative aspect-square overflow-hidden bg-linear-to-b from-slate-50 to-white">
-                  <Image src={p.image} alt={`${p.name} — ${p.subcategory}`} fill className="object-contain p-6" unoptimized />
+                  <Image src={p.image} alt={`${p.name} — ${p.subcategory}`} fill className="object-contain p-6" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw" />
                 </div>
                 <div className="flex flex-1 flex-col p-5">
                   <div className="text-[10px] font-semibold uppercase tracking-widest text-slate-500">
